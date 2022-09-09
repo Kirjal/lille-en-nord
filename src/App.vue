@@ -1,11 +1,15 @@
 <template>
-  <h1></h1>
+  <Navigation/>
+  <Pied/>
 </template>
 
 <script>
+import Navigation from './components/Navigation.vue';
+import Pied from './components/Pied.vue';
 
 export default {
-  name: 'App'
+    name: "App",
+    components: { Navigation, Pied }
 }
 </script>
 
