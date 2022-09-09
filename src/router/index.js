@@ -1,7 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router";
 import Articles from "@/pages/Articles";
 import Accueil from "@/pages/Accueil";
-import Apropos from "@/pages/Apropos";
 import Connexion from "@/pages/Connexion";
 import Inscription from "@/pages/Inscription";
 import Profil from "@/pages/Profil";
@@ -15,7 +14,6 @@ const router = createRouter({
     routes:[
         {path: '/articles', name: 'articles', component: Articles},
         {path: '/accueil', name: 'accueil', component: Accueil},
-        {path: '/apropos', name: 'apropos', component: Apropos},
         {path: '/connexion', name: 'connexion', component: Connexion},
         {path: '/inscription', name: 'inscription', component: Inscription},
         {path: '/profil', name: 'profil', component: Profil},

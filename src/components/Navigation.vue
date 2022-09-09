@@ -16,9 +16,6 @@
             <li>
                 <router-link :to="{name:'articles'}">Articles</router-link>
             </li>
-            <li>
-                <router-link :to="{name:'apropos'}">À propos</router-link>
-            </li>
         </ul>
     </nav>
 </template>
