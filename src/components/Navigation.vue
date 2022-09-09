@@ -2,7 +2,22 @@
     <nav>
         <ul>
             <li>
-                <router-link :to="{name: 'articles'}">Articles</router-link>
+                <router-link :to="{name:'accueil'}">Accueil</router-link>
+            </li>
+            <li>
+                <router-link :to="{name:'connexion'}">Connexion</router-link>
+            </li>
+            <li>
+                <router-link :to="{name:'inscription'}">Inscription</router-link>
+            </li>
+            <li>
+                <router-link :to="{name:'profil'}"></router-link>
+            </li>
+            <li>
+                <router-link :to="{name:'articles'}">Articles</router-link>
+            </li>
+            <li>
+                <router-link :to="{name:'apropos'}">À propos</router-link>
             </li>
         </ul>
     </nav>

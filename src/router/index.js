@@ -1,11 +1,27 @@
 import { createRouter, createWebHistory } from "vue-router";
 import Articles from "@/pages/Articles";
+import Accueil from "@/pages/Accueil";
+import Apropos from "@/pages/Apropos";
+import Connexion from "@/pages/Connexion";
+import Inscription from "@/pages/Inscription";
+import Profil from "@/pages/Profil";
+import Contact from "@/pages/Contact";
+import Plan from "@/pages/Plan";
+import Mentions from "@/pages/Mentions";
 
 
 
 const router = createRouter({
     routes:[
-        {path: '/articles', name: 'articles', component: Articles}
+        {path: '/articles', name: 'articles', component: Articles},
+        {path: '/accueil', name: 'accueil', component: Accueil},
+        {path: '/apropos', name: 'apropos', component: Apropos},
+        {path: '/connexion', name: 'connexion', component: Connexion},
+        {path: '/inscription', name: 'inscription', component: Inscription},
+        {path: '/profil', name: 'profil', component: Profil},
+        {path: '/contact', name: 'contact', component: Contact},
+        {path: '/plan', name: 'plan', component: Plan},
+        {path: '/mentions', name: 'mentions', component: Mentions},
     ],
     history : createWebHistory()
 });
