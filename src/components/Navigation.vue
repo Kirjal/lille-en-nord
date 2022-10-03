@@ -2,7 +2,7 @@
     <nav>
         <ul>
             <li>
-                <router-link :to="{name:'accueil'}">Accueil</router-link>
+                <router-link :to="{name:''}">Accueil</router-link>
             </li>
             <li>
                 <router-link :to="{name:'connexion'}">Connexion</router-link>
