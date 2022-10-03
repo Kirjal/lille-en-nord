@@ -1,7 +1,5 @@
 <template>
-    <div>
-
-    </div>
+    <h1>Lille en Nord</h1>
 </template>
 
 <script>

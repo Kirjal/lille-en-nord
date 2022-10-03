@@ -13,7 +13,7 @@ import Mentions from "@/pages/Mentions";
 const router = createRouter({
     routes:[
         {path: '/articles', name: 'articles', component: Articles},
-        {path: '/accueil', name: 'accueil', component: Accueil},
+        {path: '/', name: 'accueil', component: Accueil},
         {path: '/connexion', name: 'connexion', component: Connexion},
         {path: '/inscription', name: 'inscription', component: Inscription},
         {path: '/profil', name: 'profil', component: Profil},
