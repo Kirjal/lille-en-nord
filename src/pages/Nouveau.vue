@@ -3,8 +3,8 @@
     <form @submit.prevent="handleSubmit()">
 
         <div>
-            <label for="titre">Titre</label>
-            <input id="titre" v-model.trim="article.title" @input="title_dirty= true" />
+            <label for="title">Titre</label>
+            <input id="title" v-model.trim="article.title" @input="title_dirty= true" />
             <small v-show="titleError" class="error">Veuillez entrer un titre à votre article</small>
         </div>
         <div>
@@ -14,13 +14,13 @@
         </div>
         <div>
             <label for="image">Image</label>
-            <input id="image" v-model.trim="article.image" @input="image_dirty= true" />
+            <input id="image" v-model="article.image" @input="image_dirty= true" />
             <small class="error" v-show="imageError">Veuillez entrer au moins une image</small>
         </div>
         <div>
-            <label for="comments">Commentaires</label>
-            <input id="comments" v-model.trim="article.comments" @input="comments_dirty= true" />
-            <small class="error" v-show="commentsError">Veuillez entrer un commentaire pour votre article</small>
+            <label for="content">Contenu</label>
+            <textarea id="content" v-model="article.content" @input="content_dirty= true"></textarea>
+            <small class="error" v-show="contentError">Veuillez entrer un commentaire pour votre article</small>
         </div>
         <p>
             <button :disabled="formError">Enregistrer</button>
@@ -37,11 +37,13 @@ export default {
     name: "NouveauComponent",
     data: function () {
         return {
-            article: { title: '', author: '', image:'', comments:''},
+            article: { title: '', author: '', image:'', content:''},
             title_dirty: false,
             author_dirty: false,
             image_dirty: false,
-            comments_dirty:false,
+            content_dirty:false,
+            api: 'http://localhost:3000/articles',
+            error:''
         }
     },
 
@@ -49,8 +51,14 @@ export default {
         handleSubmit() {
 
             console.log(`name article : "${this.article.title}" , auteur(trice) : "${this.article.author} ", 
-            image : "${this.article.image}", comments : "${this.article.comments}"`);
-            axios.post()
+            image : "${this.article.image}", content : "${this.article.content}"`);
+            this.error = '';
+            axios.post(`${this.api}`, this.article)
+            .then(console.log(this.article))
+            .catch(err => {
+                this.article = { title: '', author: '', image:'', content:''};
+                this.error = `${err.response.status} : ${err.message}`
+            })
         }
     },
     computed: {
@@ -63,11 +71,11 @@ export default {
         imageError: function () {
             return !this.article.image && this.image_dirty;  
         },
-        commentsError: function () {
-            return !this.article.comments && this.comments_dirty; 
+        contentError: function () {
+            return !this.article.content && this.content_dirty; 
          },
         formError: function () {
-            return !this.title_dirty || !this.author_dirty || !this.image_dirty || !this.comments_dirty ||this.titleError || this.authorError || this.imageError || this.commentsError;
+            return !this.title_dirty || !this.author_dirty || !this.image_dirty || !this.content_dirty ||this.titleError || this.authorError || this.imageError || this.contentError;
         },
     }
 
