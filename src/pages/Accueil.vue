@@ -3,9 +3,12 @@
 
     <div v-if="articles" class="articles">
         <article v-for="a of articles" :key="a.id + 'a'">
-            <h2>{{a.title}}</h2>
-            <img :src="a.image" :alt="`image de l'article ${a.title}`"/>
-            <p>{{a.content}}</p>
+            <router-link :to="{name:`article`, params:{id: a.id}}">
+                <h2>{{a.title}}</h2>
+            </router-link>
+            <router-link :to="{name:`article`, params:{id: a.id}}">
+                <img :src="a.image" :alt="`image de l'article ${a.title}`"/>
+            </router-link>
             <p>Publié par {{a.author}}</p>
             <small>Tags : {{a.tags}}</small>
         </article>

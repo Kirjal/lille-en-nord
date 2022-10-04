@@ -12,7 +12,7 @@ import Nouveau from "@/pages/Nouveau";
 
 const router = createRouter({
     routes:[
-        {path: '/articles', name: 'articles', component: Articles},
+        {path: '/article/:id', name: 'article', component: Articles, props: route => ({id: +route.params.id})},
         {path: '/', name: 'accueil', component: Accueil},
         {path: '/connexion', name: 'connexion', component: Connexion},
         {path: '/inscription', name: 'inscription', component: Inscription},
@@ -20,6 +20,7 @@ const router = createRouter({
         {path: '/contact', name: 'contact', component: Contact},
         {path: '/plan', name: 'plan', component: Plan},
         {path: '/mentions', name: 'mentions', component: Mentions},
+        {path: '/nouveau', name: 'nouveau', component: Nouveau},
     ],
     history : createWebHistory()
 });

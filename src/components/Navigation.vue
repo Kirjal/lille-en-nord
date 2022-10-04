@@ -14,9 +14,6 @@
                 <router-link :to="{name:'profil'}"></router-link>
             </li>
             <li>
-                <router-link :to="{name:'articles'}">Articles</router-link>
-            </li>
-            <li>
                 <router-link :to="{name:'nouveau'}">Nouveau</router-link>
             </li>
         </ul>

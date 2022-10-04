@@ -31,7 +31,7 @@
 </template>
 
 <script>
-
+import axios from 'axios';
 export default {
 
     name: "NouveauComponent",
@@ -50,6 +50,7 @@ export default {
 
             console.log(`name article : "${this.article.title}" , auteur(trice) : "${this.article.author} ", 
             image : "${this.article.image}", comments : "${this.article.comments}"`);
+            axios.post()
         }
     },
     computed: {
