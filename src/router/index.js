@@ -7,7 +7,7 @@ import Profil from "@/pages/Profil";
 import Contact from "@/pages/Contact";
 import Plan from "@/pages/Plan";
 import Mentions from "@/pages/Mentions";
-
+import Nouveau from "@/pages/Nouveau";
 
 
 const router = createRouter({

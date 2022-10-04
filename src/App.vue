@@ -1,9 +1,9 @@
 <template>
-    <Navigation/>
-    <main>
-        <router-view></router-view>
-    </main>
-    <Pied/>
+  <Navigation/>
+  <main>
+    <router-view></router-view>
+  </main>
+  <Pied/>
 </template>
 
 <script>
