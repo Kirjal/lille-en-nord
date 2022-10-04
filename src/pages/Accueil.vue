@@ -26,16 +26,12 @@
         }),
         methods: {
             getArticles(){
-                console.log('coucou');
                 this.error='';
                 axios.get(`${this.api}`)
                 .then(({data}) => this.articles = data)
                 .catch(err => {
                     this.articles = undefined;
                     this.error = `${err.response.status} : ${err.message}`
-                })
-                .finally(()=>{
-                    console.log('fini')
                 })
             }
         },
