@@ -11,18 +11,17 @@ import Nouveau from "@/pages/Nouveau";
 
 
 const router = createRouter({
-  routes: [
-    { path: "/articles", name: "articles", component: Articles },
-    { path: "/accueil", name: "accueil", component: Accueil },
-    { path: "/connexion", name: "connexion", component: Connexion },
-    { path: "/nouveau", name: "nouveau", component: Nouveau },
-    { path: "/inscription", name: "inscription", component: Inscription },
-    { path: "/profil", name: "profil", component: Profil },
-    { path: "/contact", name: "contact", component: Contact },
-    { path: "/plan", name: "plan", component: Plan },
-    { path: "/mentions", name: "mentions", component: Mentions },
-  ],
-  history: createWebHistory(),
+    routes:[
+        {path: '/articles', name: 'articles', component: Articles},
+        {path: '/', name: 'accueil', component: Accueil},
+        {path: '/connexion', name: 'connexion', component: Connexion},
+        {path: '/inscription', name: 'inscription', component: Inscription},
+        {path: '/profil', name: 'profil', component: Profil},
+        {path: '/contact', name: 'contact', component: Contact},
+        {path: '/plan', name: 'plan', component: Plan},
+        {path: '/mentions', name: 'mentions', component: Mentions},
+    ],
+    history : createWebHistory()
 });
 
 export default router
