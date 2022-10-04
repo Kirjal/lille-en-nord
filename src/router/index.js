@@ -19,7 +19,8 @@ const router = createRouter({
         {path: '/profil', name: 'profil', component: Profil},
         {path: '/contact', name: 'contact', component: Contact},
         {path: '/plan', name: 'plan', component: Plan},
-        {path: '/mentions', name: 'mentions', component: Mentions},
+        { path: '/mentions', name: 'mentions', component: Mentions },
+        {path: '/nouveau', name: 'nouveau', component: Nouveau},
     ],
     history : createWebHistory()
 });
