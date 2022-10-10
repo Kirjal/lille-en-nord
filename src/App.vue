@@ -1,9 +1,9 @@
 <template>
   <Navigation/>
-  <main>
+  <main v-on:click="fermeMenu()">
     <router-view></router-view>
   </main>
-  <Pied/>
+  <Pied v-on:click="fermeMenu()"/>
 </template>
 
 <script>
@@ -12,7 +12,12 @@ import Pied from './components/Pied.vue';
 
 export default {
     name: "App",
-    components: { Navigation, Pied }
+    components: { Navigation, Pied },
+    methods:{
+        fermeMenu(){
+            document.querySelector('nav').classList.remove("menupresent");
+        }
+    }
 }
 </script>
 
@@ -44,6 +49,7 @@ main {
     align-items: center;
     line-height: 1.6;
     color: #222;
+    min-height:100vh;
 }
 
 a {

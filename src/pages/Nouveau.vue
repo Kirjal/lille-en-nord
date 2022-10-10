@@ -31,6 +31,7 @@
 </template>
 
 <script>
+import router from '@/router';
 import axios from 'axios';
 export default {
 
@@ -54,7 +55,7 @@ export default {
             image : "${this.article.image}", content : "${this.article.content}"`);
             this.error = '';
             axios.post(`${this.api}`, this.article)
-            .then(console.log(this.article))
+            .then(()=>router.push('/'))
             .catch(err => {
                 this.article = { title: '', author: '', image:'', content:''};
                 this.error = `${err.response.status} : ${err.message}`

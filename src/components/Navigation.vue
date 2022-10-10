@@ -4,23 +4,22 @@
         <i class="fas fa-times" v-on:click="fermeMenu()"></i>
         <ul>
             <li>
-                <router-link :to="{name:'accueil'}">Accueil</router-link>
+                <router-link v-on:click="fermeMenu()" :to="{name:'accueil'}">Accueil</router-link>
             </li>
             <li>
-                <p v-on:click="connexion()">Connexion</p>
+                <router-link v-on:click="fermeMenu()" :to="{name:'connexion'}">Connexion</router-link>
             </li>
             <li>
-                <router-link :to="{name:'inscription'}">Inscription</router-link>
+                <router-link v-on:click="fermeMenu()" :to="{name:'inscription'}">Inscription</router-link>
             </li>
             <li>
-                <router-link :to="{name:'profil'}">Profil</router-link>
+                <router-link v-on:click="fermeMenu()" :to="{name:'profil'}">Profil</router-link>
             </li>
             <li>
-                <router-link :to="{name:'nouveau'}">Nouveau</router-link>
+                <router-link v-on:click="fermeMenu()" :to="{name:'nouveau'}">Nouveau</router-link>
             </li>
         </ul>
     </nav>
-    <Connexion v-if="c" />
 </template>
 
 <script>
@@ -69,7 +68,7 @@ nav {
   position: fixed;
   top: 0;
   left: -250px;
-  transition: 250ms linear all;
+  transition: 250ms all;
   background-color: var(--main-color);
 }
 
