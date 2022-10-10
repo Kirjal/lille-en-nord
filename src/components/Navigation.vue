@@ -7,7 +7,7 @@
                 <router-link :to="{name:'accueil'}">Accueil</router-link>
             </li>
             <li>
-                <router-link :to="{name:'connexion'}">Connexion</router-link>
+                <p v-on:click="connexion()">Connexion</p>
             </li>
             <li>
                 <router-link :to="{name:'inscription'}">Inscription</router-link>
@@ -20,6 +20,7 @@
             </li>
         </ul>
     </nav>
+    <Connexion v-if="c" />
 </template>
 
 <script>
@@ -31,6 +32,9 @@
             },
             fermeMenu(){
                 document.querySelector('nav').classList.remove("menupresent");
+            },
+            connexion() {
+                
             }
         }
     }

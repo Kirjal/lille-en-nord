@@ -1,8 +1,14 @@
 <template>
     <div>
      <br/>  
-
-     <h2> NO WORRIES ! ON RESPECTE TON INTIMITÉ ET TES DONNÉES. </h2>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <h2 class="animate-charcter"> NO WORRIES ! ON RESPECTE TON INTIMITÉ ET TES DONNÉES.</h2>
+            </div>
+        </div>
+    </div>
+     
      <br/>
      <hr/>
     <br/>
@@ -34,7 +40,15 @@
             <h4>    Des questions ?</h4>
         </div>
     <br />
-    <button>Dis nous ce que tu as sur le coeur</button>
+<button>Dis nous ce que tu as sur le coeur</button>
+
+<!-- bouton qui renvoi vers gmail avec une boite de nouveau message à pofiner!! 
+
+    <div class="hidden content">
+        <a href='https://mail.google.com/mail/u/0/#inbox?compose=new' target='_blank'><button>Dis nous ce que tu as sur le coeur</button></a>
+    </div>-->
+
+
     </section>
     
     
@@ -83,7 +97,7 @@
         }
     
         .content h4:nth-child(2) {
-            color: #f41703;
+            color: #E30613;
             animation: animate 4s ease-in-out infinite;
         }
     
@@ -114,4 +128,31 @@
                         0% 100%);
             }
         }
+
+
+                .animate-charcter {
+                    text-transform: uppercase;
+                    background-image: linear-gradient(-225deg,
+                            #231557 0%,
+                            #44107a 29%,
+                            #ff1361 67%,
+                            #fff800 100%);
+                    background-size: auto auto;
+                    background-clip: border-box;
+                    background-size: 200% auto;
+                    color: #fff;
+                    background-clip: text;
+                    text-fill-color: transparent;
+                    -webkit-background-clip: text;
+                    -webkit-text-fill-color: transparent;
+                    animation: textclip 2s linear infinite;
+                    display: inline-block;
+                    font-size: 25px;
+                }
+        
+                @keyframes textclip {
+                    to {
+                        background-position: 200% center;
+                    }
+                }
 </style>
