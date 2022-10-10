@@ -39,42 +39,6 @@
 
 <style scoped>
 
-.fa-bars, .fa-times {
-  display: none;
-}
-
-nav {
-  background-color: var(--main-color);
-}
-
-nav ul {
-  display: flex;
-  list-style-type: none;
-}
-
-nav ul li {
-  width: 100%;
-  text-align: center;
-  position: relative;
-  line-height: 50px;
-}
-
-nav ul li a {
-  color: white;
-  text-decoration: none;
-}
-
-@media screen and (max-width:768px) {
-  
-  .fa-bars {
-  display: block;
-  position: fixed;
-  top: 30px;
-  right: 30px;
-  font-size: 3rem;
-  cursor: pointer;
-}
-
 .fa-times {
   display: block;
   position: absolute;
@@ -86,6 +50,15 @@ nav ul li a {
   cursor: pointer;
 }
 
+.fa-bars {
+  display: block;
+  position: fixed;
+  top: 30px;
+  right: 30px;
+  font-size: 3rem;
+  cursor: pointer;
+}
+
 nav {
   width: 250px;
   height: 100%;
@@ -93,6 +66,7 @@ nav {
   top: 0;
   left: -250px;
   transition: 250ms linear all;
+  background-color: var(--main-color);
 }
 
 nav ul {
@@ -106,10 +80,13 @@ nav ul li {
   padding-left: 30px;
 }
 
-.menupresent {
-  left: 0;
+nav ul li a {
+  color: white;
+  text-decoration: none;
 }
 
+.menupresent {
+  left: 0;
 }
 
 </style>

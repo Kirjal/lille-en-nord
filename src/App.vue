@@ -37,6 +37,73 @@ export default {
   padding: 0;
 }
 
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    line-height: 1.6;
+    color: #222;
+}
+
+a {
+    text-decoration: none;
+    color: var(--main-color-link)
+}
+
+a:hover {
+    color: var(--main-color-darkest)
+}
+
+html {
+  /* Définition 1rem = 10px */
+  font-size: 62.5%;
+}
+
+body {
+  /* 16px */
+  font-size: 1.6rem;
+  font-family: sans-serif;
+  line-height: 1.6;
+  color: #222;
+  min-height: 100vh;
+}
+
+h1 {
+  /* 32px */
+  font-size: 3.2rem;
+}
+
+h2 {
+  /* 24px */  
+  font-size: 2.4rem;
+}
+
+h3 {
+  /* 19px */
+  font-size: 1.9rem;
+}
+
+h4 {
+  /* 16px */  
+  font-size: 1.6rem;
+}
+
+h5 {
+  /* 13px */  
+  font-size: 1.3rem;
+}
+
+h6 {
+  /* 11px */  
+  font-size: 1.1rem;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Helvetica Neue';
+    font-weight: bold;
+}
+
 @font-face {
     font-family: 'Helvetica Neue';
     src: local('Helvetica Neue Bold Italic'), local('HelveticaNeue-BoldItalic'),
