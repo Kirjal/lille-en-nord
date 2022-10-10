@@ -6,11 +6,19 @@
             <img :src="article.image" :alt="`Image de l'article ${article.title}`"/>
         </p>
         <i>{{article.author}}</i>
-        <p>{{article.content}}</p>
+        <p v-if="!mod" v-on:dblclick="updateArticle()">{{article.content}}</p>
+        <div v-if="mod" class="update">
+            <form @submit.prevent="confirmUpdate(article.id)">
+                <textarea v-model="this.updateField"></textarea>
+                <button type="submit">Confirmer les modifications</button>
+                <button type="button" v-on:click="this.mod=false">Annuler les modifications</button>
+            </form>
+        </div>
 
 
         <p>
-            <button v-on:click="deleteArticle(article.id)">Supprimer l'article</button>
+            <button v-on:click="updateArticle()">Modifier l'article</button>
+            <button v-on:click="this.del=true">Supprimer l'article</button>
         </p>
     </div>
     <div v-else-if="error">
@@ -23,7 +31,7 @@
         <p>Souhaitez-vous supprimer l'article {{article.title}}?</p>
         <p>
             <button v-on:click="confirmDelete(article.id)">Confirmer la suppression</button>
-            <button v-on:click="deleteArticle()">Annuler la suppression</button>
+            <button v-on:click="this.del=false">Annuler la suppression</button>
         </p>
     </div>
 </template>
@@ -37,7 +45,9 @@
             article: undefined,
             api: 'http://localhost:3000/articles',
             error: '',
-            del: false
+            del: false,
+            mod:false,
+            updateField: ''
         }),
         props:{
             id: Number
@@ -52,13 +62,6 @@
                     this.error = `${err.response.status} : ${err.message}`;
                 })
             },
-            deleteArticle(){
-                if(!this.del){
-                    this.del = true;
-                }else{
-                    this.del = false;
-                }
-            },
             confirmDelete(id){
                 this.error='';
                 axios.delete(`${this.api}/${id}`)
@@ -67,6 +70,22 @@
                     this.error = `${err.response.status} : ${err.message}`;
                 });
                 this.del = false;
+            },
+            updateArticle(){
+                this.updateField = this.article.content;
+                this.mod = true;
+            },
+            confirmUpdate(id){
+                this.error='';
+                axios.patch(`${this.api}/${id}`, {content: this.updateField})
+                .then(() => {
+                    this.article.content = this.updateField;
+                    this.updateField = '';
+                    this.mod = false;
+                })
+                .catch(err=>{
+                    this.error = `${err.response.status} : ${err.message}`;
+                })
             }
         },
         mounted(){
