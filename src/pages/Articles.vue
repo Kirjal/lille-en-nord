@@ -64,6 +64,7 @@
             },
             confirmDelete(id){
                 this.error='';
+                console.log(`${this.api}/${id}`)
                 axios.delete(`${this.api}/${id}`)
                 .then(()=>router.push('/'))
                 .catch(err=>{

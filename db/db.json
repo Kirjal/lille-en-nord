@@ -15,7 +15,7 @@
       "image": "https://lille.guide-ville.com/wp-content/uploads/2014/09/grand-place-lille-1-5.jpg",
       "content": "Hello, On part à Lille pour le week end ? Je vous avoue que ce n’est pas la destination qui me faisait le plus rêver et pourtant c’est une ville que j’ai adoré découvrir en hiver. Si vous cherchez d’autres idées de destinations en France et en Europe à visiter en hiver on vous recommande de lire cet article. Lille est le chef-lieu des Hauts-de-France et l’une des plus grande agglomération de France avec ses 1 037 939 habitants. La ville n’est pas réputée pour son beau temps mais pourtant il n’a pas fait si mauvais que ça quand j’y étais, ou du moins seulement la moitié du temps haha. On connaît Lille principalement pour sa grande braderie à la rentrée, JF y est déjà allé mais pas moi… mais ça me tente bien ! Le nord est réputé pour sa bonne ambiance alors ça ne peut qu’être sympa !",
       "author": "Alexandre",
-      "userId": 2,
+      "userId": 1,
       "tags": "découverte"
     },
     {
@@ -24,7 +24,7 @@
       "image": "https://media.routard.com/image/30/9/photo.1593309.w430.jpg",
       "content": "Il suffit alors de remonter la rue pour voir apparaître La Place du Théâtre et L’Opéra de Lille… Théâtre de style néo-classique datant du début des années 1900 et inspiré de la façade du Palais Garnier.Ainsi que La Chambre du Commerce (Nouvelle Bourse)… et son Beffroi de 76 mètres, orné d’un carillon de 25 cloches et d’une horloge de 4 cadrans domine… A cet endroit nous ne pouvons rejoindre la Grand’Place (également Place du Général De Gaulle) sans passer devant l’un des bâtiments les plus prestigieux de Lille, à l’architecture typique de la Renaissance Flamande du XVIIe… La Vieille Bourse…",
       "author": "Philippe",
-      "userId": 3,
+      "userId": 1,
       "tags": "soirée"
     },
     {
@@ -38,7 +38,7 @@
   "users": [
     {
       "id": 1,
-      "login": "admin",
+      "email": "admin",
       "password": "admin",
       "first_name": "admin",
       "last_name": "admin"
