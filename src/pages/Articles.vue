@@ -1,5 +1,5 @@
 <template>
-    <div v-if="article">
+    <div class="article" v-if="article">
         <h2>{{article.title}}</h2>
         <small>{{article.tags}}</small>
         <img v-if="article.image" :src="article.image" :alt="`Image de l'article ${article.title}`"/>
@@ -95,7 +95,28 @@
 </script>
 
 <style scoped>
-    .delete{
+
+    .article {
+        width: 80%;
+        backdrop-filter: blur(20px);
+        box-shadow: 0 3px 15px rgba(51, 51, 51, 0.2);
+        border-radius: 10px;
+        padding: 20px;
+        background-color: rgba(255, 255, 255, 0.6);
+    }
+
+    .article img {
+        display: block;
+        margin: 20px auto;
+    }
+
+    .article small {
+        background-color: rgba(51, 51, 51, 0.2);
+        border-radius: 10px;
+        padding: 5px;
+    }
+
+    .delete {
         display:flex;
         flex-direction:column;
         justify-content:center;

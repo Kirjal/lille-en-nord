@@ -1,18 +1,20 @@
 <template>
+  <Logo />
   <Navigation/>
+  <Citadelle />
   <main v-on:click="fermeMenu()">
     <router-view></router-view>
   </main>
-  <Pied v-on:click="fermeMenu()"/>
 </template>
 
 <script>
 import Navigation from './components/Navigation.vue';
-import Pied from './components/Pied.vue';
+import Logo from './components/Logo.vue';
+import Citadelle from './components/Citadelle.vue'
 
 export default {
     name: "App",
-    components: { Navigation, Pied },
+    components: { Navigation, Logo, Citadelle },
     methods:{
         fermeMenu(){
             document.querySelector('nav').classList.remove("menupresent");
@@ -49,7 +51,8 @@ main {
     align-items: center;
     line-height: 1.6;
     color: #222;
-    min-height:100vh;
+    min-height: calc(100vh - 100px);
+    padding: 20px 0;
 }
 
 a {

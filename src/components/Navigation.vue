@@ -15,6 +15,15 @@
             <li>
                 <router-link v-on:click="fermeMenu()" :to="{name:'nouveau'}">Nouveau</router-link>
             </li>
+            <li>
+                <router-link v-on:click="fermeMenu()" :to="{name:'contact'}">Contact</router-link>
+            </li>
+            <li>
+                <router-link v-on:click="fermeMenu()" :to="{name:'mentions'}">Mentions Légales</router-link>
+            </li>
+            <li>
+                <router-link v-on:click="fermeMenu()" :to="{name:'plan'}">Plan du site</router-link>
+            </li>
         </ul>
     </nav>
 </template>
@@ -57,14 +66,18 @@
   right: 30px;
   font-size: 3rem;
   cursor: pointer;
+  z-index: 1;
 }
 
 nav {
+  display: flex;
+  flex-direction: column;
   width: 250px;
   height: 100%;
   position: fixed;
+  z-index: 1;
   top: 0;
-  left: -250px;
+  right: -250px;
   transition: 250ms all;
   background-color: var(--main-color);
 }
@@ -72,12 +85,16 @@ nav {
 nav ul {
   flex-direction: column;
   margin-top: 50px;
+  list-style: none;
 }
 
 nav ul li {
   width: 100%;
   text-align: left;
   padding-left: 30px;
+  font-family: 'Helvetica Neue';
+  font-weight: bold;
+  font-size: 20px;
 }
 
 nav ul li a {
@@ -85,8 +102,40 @@ nav ul li a {
   text-decoration: none;
 }
 
+nav ul li a:hover {
+  text-decoration: underline;
+}
+
 .menupresent {
-  left: 0;
+  right: 0;
+}
+
+@media screen and (max-width:768px) {
+  
+  .fa-bars {
+    top: unset;
+    bottom: 20px;
+  }
+
+  .fa-times {
+    top: unset;
+    bottom: 20px;
+  }
+
+  nav {
+    flex-direction: column-reverse;
+  }
+
+  nav ul {
+    margin-top: unset;
+    margin-bottom: 50px;
+  }
+
+  .fa-times {
+    top: unset;
+    bottom: 20px;
+  }
+
 }
 
 </style>

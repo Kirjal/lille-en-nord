@@ -1,5 +1,4 @@
 <template>
-    <h1>Lille en Nord</h1>
 
     <div v-if="articles" class="articles">
         <article v-for="a of articles" :key="a.id + 'a'">
@@ -7,11 +6,13 @@
                 <img v-if="a.image" :src="a.image" :alt="`image de l'article ${a.title}`"/>
                 <img v-else src="./../assets/img/planLille.jpg"/>
             </router-link>
-            <router-link :to="{name:`article`, params:{id: a.id}}">
+            <div>
+                <router-link :to="{name:`article`, params:{id: a.id}}">
                 <h2>{{a.title}}</h2>
             </router-link>
             <p>Publié par {{a.author}}</p>
             <small>Tags : {{a.tags}}</small>
+            </div>
         </article>
     </div>
     <p v-else-if="error">{{error}}</p>
@@ -46,23 +47,30 @@
 </script>
 
 <style scoped>
-    .articles {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-    }
+.articles {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
 
-    article {
-        width: 350px;
-        background-color: rgba(0,255,0,.2);
-        margin: 10px;
-        box-shadow: 0 3px 15px rgba(51, 51, 51, 0.2);
-        border-radius: 10px;
-    }
+article {
+    width: 350px;
+    backdrop-filter: blur(20px);
+    margin: 10px;
+    box-shadow: 0 3px 15px rgba(51, 51, 51, 0.2);
+    border-radius: 10px;
+    overflow: hidden;
+}
 
-    article img {
-        width: 100%;
-        object-fit: cover;
-        border-radius: 10px 10px 0 0;
-    }
+article div {
+    padding: 0 0 20px 20px;
+}
+
+article img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+
 </style>
