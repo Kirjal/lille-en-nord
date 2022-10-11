@@ -30,19 +30,18 @@
     {
       "title": "NOUVEAU FILLER",
       "author": "bonjour",
-      "image": "non",
+      "image": "",
       "content": "jean-marc généreux ",
       "id": 4
     }
   ],
   "users": [
     {
-      "id": 1,
-      "email": "admin",
-      "password": "admin",
+      "email": "admin@admin.fr",
+      "password": "$2a$10$VBcWyQdJNncT6K3Nj7Yl5.B6xMjd1JKl5tUxtiaHH1eK4ELhbMY9u",
       "first_name": "admin",
-      "last_name": "admin"
+      "last_name": "admin",
+      "id": 1
     }
-   
   ]
 }

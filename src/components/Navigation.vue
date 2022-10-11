@@ -10,9 +10,6 @@
                 <router-link v-on:click="fermeMenu()" :to="{name:'connexion'}">Connexion</router-link>
             </li>
             <li>
-                <router-link v-on:click="fermeMenu()" :to="{name:'inscription'}">Inscription</router-link>
-            </li>
-            <li>
                 <router-link v-on:click="fermeMenu()" :to="{name:'profil'}">Profil</router-link>
             </li>
             <li>

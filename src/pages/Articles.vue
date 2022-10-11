@@ -2,9 +2,8 @@
     <div v-if="article">
         <h2>{{article.title}}</h2>
         <small>{{article.tags}}</small>
-        <p>
-            <img :src="article.image" :alt="`Image de l'article ${article.title}`"/>
-        </p>
+        <img v-if="article.image" :src="article.image" :alt="`Image de l'article ${article.title}`"/>
+        <img v-else src="./../assets/img/planLille.jpg"/>
         <i>{{article.author}}</i>
         <p v-if="!mod" v-on:dblclick="updateArticle()">{{article.content}}</p>
         <div v-if="mod" class="update">

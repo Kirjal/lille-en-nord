@@ -14,7 +14,7 @@
         </div>
         <div>
             <label for="image">Image</label>
-            <input id="image" v-model="article.image" @input="image_dirty= true" />
+            <input id="image" v-model="article.image"/>
             <small class="error" v-show="imageError">Veuillez entrer au moins une image</small>
         </div>
         <div>
@@ -69,14 +69,11 @@ export default {
         authorError: function () {
             return !this.article.author && this.author_dirty;
         },
-        imageError: function () {
-            return !this.article.image && this.image_dirty;  
-        },
         contentError: function () {
             return !this.article.content && this.content_dirty; 
          },
         formError: function () {
-            return !this.title_dirty || !this.author_dirty || !this.image_dirty || !this.content_dirty ||this.titleError || this.authorError || this.imageError || this.contentError;
+            return !this.title_dirty || !this.author_dirty || !this.content_dirty ||this.titleError || this.authorError || this.contentError;
         },
     }
 

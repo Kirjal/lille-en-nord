@@ -4,7 +4,8 @@
     <div v-if="articles" class="articles">
         <article v-for="a of articles" :key="a.id + 'a'">
             <router-link :to="{name:`article`, params:{id: a.id}}">
-                <img :src="a.image" :alt="`image de l'article ${a.title}`"/>
+                <img v-if="a.image" :src="a.image" :alt="`image de l'article ${a.title}`"/>
+                <img v-else src="./../assets/img/planLille.jpg"/>
             </router-link>
             <router-link :to="{name:`article`, params:{id: a.id}}">
                 <h2>{{a.title}}</h2>

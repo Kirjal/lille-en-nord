@@ -33,7 +33,7 @@
         </div>
         <div>
             <label for="login">Identifiant (adresse mail) : </label>
-            <input id="login" v-model.trim="users.login" @input="login_dirty= true" />
+            <input id="login" v-model.trim="users.email" @input="login_dirty= true" />
             <small v-show="loginError" class="error">Veuillez entrer un identifient valide</small>
         </div>
         <div>
@@ -72,6 +72,7 @@ import axios from 'axios';
         methods: {
             handleSubmit() {
                 this.error = '';
+                console.log(this.users);
                 axios.post(this.api, this.users)
                     .then(() => {
                         this.users = { email: '', password: '', first_name: '', last_name: '' };
@@ -91,7 +92,14 @@ import axios from 'axios';
                 this.error='';
                 this.user = { email : this.login0, password : this.password0 };
                 console.log(this.user);
-                axios.post(this.login_api, this.user)
+                fetch(this.login_api, {
+                    method: 'POST',
+                    headers: { 'Content-type' : 'application/json'},
+                    body: JSON.stringify(this.user)
+                })
+                .then(res => res.json())
+                .then(data => console.log(data.user))
+                /*axios.post(this.login_api, this.user)
                 .then(()=>{
                     this.user = { email: '', password: '' }
                     this.login0_dirty = false;
@@ -100,7 +108,7 @@ import axios from 'axios';
                 .catch(err => {
                     this.user = { email : this.login0, password : this.password0 };
                     this.error = `${err.response.status} : ${err.message}`;
-                })
+                })*/
             },
         },
         computed: {
@@ -117,7 +125,7 @@ import axios from 'axios';
                 return !this.users.last_name && this.last_name_dirty;
             },
             loginError: function() {
-                return !this.users.login && this.login_dirty;
+                return !this.users.email && this.login_dirty;
             },
             passwordError: function() {
                 return !this.users.password && this.password_dirty;
