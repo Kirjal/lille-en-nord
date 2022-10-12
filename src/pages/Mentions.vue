@@ -40,14 +40,9 @@
             <h4>    Des questions ?</h4>
         </div>
     <br />
-<button>Dis nous ce que tu as sur le coeur</button>
-
-<!-- bouton qui renvoi vers gmail avec une boite de nouveau message à pofiner!! 
-
-    <div class="hidden content">
-        <a href='https://mail.google.com/mail/u/0/#inbox?compose=new' target='_blank'><button>Dis nous ce que tu as sur le coeur</button></a>
-    </div>-->
-
+    
+      <a href="mailto:lilleennord.contact@gmail.com">Dis nous ce que tu as sur le coeur ❤📧</a> 
+    
 
     </section>
     
@@ -155,4 +150,6 @@
                         background-position: 200% center;
                     }
                 }
+
+   
 </style>
