@@ -45,95 +45,97 @@
 
 <script>
 import axios from 'axios';
-export default {
-    name: 'ConnexionComponent',
-    data: function () {
-        return {
-            user: { email: '', password: '' },
-            users: { email: '', password: '', first_name: '', last_name: '' },
-            login0: '',
-            password0: '',
-            login_dirty: false,
-            password_dirty: false,
-            first_name_dirty: false,
-            last_name_dirty: false,
-            login0_dirty: false,
-            password0_dirty: false,
-            api: 'http://localhost:3000/users',
-            login_api: 'http://localhost:3000/login',
-            error: ''
-        }
-    },
-    methods: {
-        handleSubmit() {
-            this.error = '';
-            console.log(this.users);
-            axios.post(this.api, this.users)
-                .then(() => {
-                    this.users = { email: '', password: '', first_name: '', last_name: '' };
-                    this.first_name_dirty = false;
-                    this.last_name_dirty = false;
-                    this.login_dirty = false;
-                    this.password_dirty = false;
-
+    export default {
+        name: 'ConnexionComponent',
+        data: function () {
+            return {
+                user: { email: '', password: ''},
+                users: { email: '', password: '', first_name: '', last_name: '' },
+                login0: '',
+                password0: '',
+                login_dirty: false,
+                password_dirty: false,
+                first_name_dirty: false,
+                last_name_dirty: false,
+                login0_dirty: false,
+                password0_dirty: false,
+                api: 'http://localhost:3000/users',
+                login_api: 'http://localhost:3000/login',
+                error: ''
+            }
+        },
+        methods: {
+            handleSubmit() {
+                this.error = '';
+                console.log(this.users);
+                axios.post(this.api, this.users)
+                    .then(() => {
+                        this.users = { email: '', password: '', first_name: '', last_name: '' };
+                        this.first_name_dirty = false;
+                        this.last_name_dirty = false;
+                        this.login_dirty = false;
+                        this.password_dirty = false;
+                        
+                    })
+                    
+                    .catch(err => {
+                        this.users = { email: '', password: '', first_name: '', last_name: '' };
+                        this.error = `${err.response.status} : ${err.message}`;
+                    })
+            },
+            handleSubmit0() {
+                this.error = '';
+                this.user = { email: this.login0, password: this.password0 };
+                console.log(this.user);
+                fetch(this.login_api, {
+                    method: 'POST',
+                    headers: { 'Content-type': 'application/json' },
+                    body: JSON.stringify(this.user)
                 })
-
+                .then(res => res.json())
+                .then(data => {
+                    localStorage.setItem('token', data.accessToken);
+                    localStorage.setItem('user', JSON.stringify(data.user));//const chosemachin = JSON.parse(localStorage.getItem('user')) pour repasser en objet et le cibler fastoche
+                    this.$emit('connexion', data.user);
+                    this.login0 = '';
+                    this.password0 = '';
+                    this.login0_dirty = false;
+                    this.password0_dirty = false;
+                })
                 .catch(err => {
                     this.users = { email: '', password: '', first_name: '', last_name: '' };
                     this.error = `${err.response.status} : ${err.message}`;
                 })
+            },
         },
-        handleSubmit0() {
-            this.error = '';
-            this.user = { email: this.login0, password: this.password0 };
-            console.log(this.user);
-            fetch(this.login_api, {
-                method: 'POST',
-                headers: { 'Content-type': 'application/json' },
-                body: JSON.stringify(this.user)
-            })
-                .then(res => res.json())
-                .then(data => console.log(data.user))
-            /*axios.post(this.login_api, this.user)
-            .then(()=>{
-                this.user = { email: '', password: '' }
-                this.login0_dirty = false;
-                this.password0_dirty = false;
-            })
-            .catch(err => {
-                this.user = { email : this.login0, password : this.password0 };
-                this.error = `${err.response.status} : ${err.message}`;
-            })*/
+        computed: {
+            login0Error: function () {
+                return !this.login0 && this.login0_dirty;
+            },
+            password0Error: function () {
+                return !this.password0 && this.password0_dirty;
+            },
+            first_nameError: function () {
+                return !this.users.first_name && this.first_name_dirty;
+            },
+            last_nameError: function () {
+                return !this.users.last_name && this.last_name_dirty;
+            },
+            loginError: function () {
+                return !this.users.email && this.login_dirty;
+            },
+            passwordError: function () {
+                return !this.users.password && this.password_dirty;
+            },
+            formError: function () {
+                return this.first_nameError || !this.first_name_dirty || this.last_nameError || !this.last_name_dirty || this.loginError || !this.login_dirty || this.passwordError || !this.password_dirty;
+            },
+            form0Error: function () {
+                return this.login0Error || this.password0Error || !this.login0_dirty || !this.password0_dirty;
+            }
         },
-    },
-    computed: {
-        login0Error: function () {
-            return !this.login0 && this.login0_dirty;
-        },
-        password0Error: function () {
-            return !this.password0 && this.password0_dirty;
-        },
-        first_nameError: function () {
-            return !this.users.first_name && this.first_name_dirty;
-        },
-        last_nameError: function () {
-            return !this.users.last_name && this.last_name_dirty;
-        },
-        loginError: function () {
-            return !this.users.email && this.login_dirty;
-        },
-        passwordError: function () {
-            return !this.users.password && this.password_dirty;
-        },
-        formError: function () {
-            return this.first_nameError || !this.first_name_dirty || this.last_nameError || !this.last_name_dirty || this.loginError || !this.login_dirty || this.passwordError || !this.password_dirty;
-        },
-        form0Error: function () {
-            return this.login0Error || this.password0Error || !this.login0_dirty || !this.password0_dirty;
-        }
-    },
-
-}
+        emits:['connexion']
+    }
 
 </script>
 

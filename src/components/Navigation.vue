@@ -13,7 +13,7 @@
                 <router-link v-on:click="fermeMenu()" :to="{name:'profil'}">Profil</router-link>
             </li>
             <li>
-                <router-link v-on:click="fermeMenu()" :to="{name:'nouveau'}">Nouveau</router-link>
+                <router-link v-on:click="fermeMenu()" :to="{name:'nouveau'}" v-if="user.author">Nouveau</router-link>
             </li>
             <li>
                 <router-link v-on:click="fermeMenu()" :to="{name:'contact'}">Contact</router-link>
@@ -40,6 +40,12 @@
             },
             connexion() {
                 
+            }
+        },
+        props:{
+            user: {
+                type: Object,
+                default:()=>({})
             }
         }
     }

@@ -1,23 +1,32 @@
 <template>
   <Logo />
-  <Navigation/>
-  <Citadelle />
+  <Navigation :user="user"/>
+  <User :user="user" @deconnexion="updateUser"/>
   <main v-on:click="fermeMenu()">
-    <router-view></router-view>
+    <router-view @connexion="updateUser"></router-view>
   </main>
+  <Citadelle/>
 </template>
 
 <script>
 import Navigation from './components/Navigation.vue';
 import Logo from './components/Logo.vue';
 import Citadelle from './components/Citadelle.vue'
+import User from './components/User.vue';
 
 export default {
     name: "App",
-    components: { Navigation, Logo, Citadelle },
+    components: { Navigation, Logo, Citadelle, User },
+    data:()=>({
+        user: undefined
+    }),
     methods:{
         fermeMenu(){
             document.querySelector('nav').classList.remove("menupresent");
+        },
+        updateUser(user){
+            console.log(user);
+            this.user = user;
         }
     }
 }
