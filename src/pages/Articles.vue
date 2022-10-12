@@ -7,7 +7,7 @@
         <small v-if="article.tags">{{article.tags}}</small>
         <img v-if="article.image" :src="article.image" :alt="`Image de l'article ${article.title}`" />
         <img v-else src="./../assets/img/planLille.jpg" />
-        <p v-if="!mod" v-on:dblclick="updateArticle()">{{article.content}}</p>
+        <p v-if="!mod" v-on:dblclick="updateArticle($event)">{{article.content}}</p>
         <div v-if="mod" class="update">
             <form @submit.prevent="confirmUpdate(article.id)">
                 <textarea v-model="this.updateField"></textarea>
@@ -16,8 +16,8 @@
             </form>
         </div>
         <div class="boutons">
-            <button v-on:click="updateArticle()">Modifier l'article</button>
-            <button v-on:click="this.del=true">Supprimer l'article</button>
+            <button v-on:click="updateArticle()" v-if="user.author">Modifier l'article</button>
+            <button v-on:click="this.del=true" v-if="user.author">Supprimer l'article</button>
         </div>
     </div>
     <div v-else-if="error">
@@ -48,8 +48,12 @@ export default {
         mod: false,
         updateField: ''
     }),
-    props: {
-        id: Number
+    props:{
+        id: Number,
+        user: {
+            type: Object,
+            default:()=>({})
+        }
     },
     methods: {
         getArticle() {
@@ -71,7 +75,10 @@ export default {
                 });
             this.del = false;
         },
-        updateArticle() {
+        updateArticle(e) {
+            if(!this.user.author){
+                return e.preventDefault()
+            }
             this.updateField = this.article.content;
             this.mod = true;
         },

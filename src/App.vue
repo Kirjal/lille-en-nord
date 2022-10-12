@@ -3,7 +3,7 @@
   <Navigation :user="user"/>
   <User :user="user" @deconnexion="updateUser"/>
   <main v-on:click="fermeMenu()">
-    <router-view @connexion="updateUser"></router-view>
+    <router-view @connexion="updateUser" :user="user"></router-view>
   </main>
   <Citadelle/>
 </template>

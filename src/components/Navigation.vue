@@ -10,7 +10,7 @@
                 <router-link v-on:click="fermeMenu()" :to="{name:'connexion'}">Connexion</router-link>
             </li>
             <li>
-                <router-link v-on:click="fermeMenu()" :to="{name:'profil'}">Profil</router-link>
+                <router-link v-on:click="fermeMenu()" :to="{name:'profil'}" v-if="user.first_name">Profil</router-link><!--tester directement le 'user' de localStorage, car cette solution pour v-if est pas jolie-->
             </li>
             <li>
                 <router-link v-on:click="fermeMenu()" :to="{name:'nouveau'}" v-if="user.author">Nouveau</router-link>

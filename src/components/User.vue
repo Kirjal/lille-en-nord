@@ -12,7 +12,7 @@ export default {
         user: {
             type: Object,
             default:()=>(undefined)
-            }
+        }
     },
     methods:{
         signOut(){

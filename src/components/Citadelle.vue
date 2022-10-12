@@ -20,7 +20,7 @@
 
     .citadelle img {
         opacity: 0.3;
-        position: absolute;
+        position: fixed;
         bottom: -170px;
         left: -400px;
     }

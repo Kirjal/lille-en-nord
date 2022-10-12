@@ -1,5 +1,5 @@
 <template>
-    <div class="formulaire">
+    <div class="formulaire" v-if="user.author">
         <h2> Créer votre article</h2>
         <form @submit.prevent="handleSubmit()">
             <div>
@@ -24,6 +24,9 @@
             <button :disabled="formError">Enregistrer</button>
         </form>
     </div>
+    <div v-else>
+        <p>No author rights?</p>
+    </div>
 
 </template>
 
@@ -42,6 +45,12 @@ export default {
             content_dirty: false,
             api: 'http://localhost:3000/articles',
             error: ''
+        }
+    },
+    props:{
+        user: {
+            type: Object,
+            default:()=>({})
         }
     },
 
