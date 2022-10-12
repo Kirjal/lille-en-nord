@@ -3,50 +3,59 @@
     <div v-if="articles" class="articles">
         <article v-for="a of articles" :key="a.id + 'a'">
             <router-link :to="{name:`article`, params:{id: a.id}}">
-                <img v-if="a.image" :src="a.image" :alt="`image de l'article ${a.title}`"/>
-                <img v-else src="./../assets/img/planLille.jpg"/>
+                <img v-if="a.image" :src="a.image" :alt="`image de l'article ${a.title}`" />
+                <img v-else src="./../assets/img/planLille.jpg" />
             </router-link>
-            <div>
+            <div class="description">
                 <router-link :to="{name:`article`, params:{id: a.id}}">
-                <h2>{{a.title}}</h2>
-            </router-link>
-            <p>Publié par {{a.author}}</p>
-            <small>Tags : {{a.tags}}</small>
+                    <h2>{{a.title}}</h2>
+                </router-link>
+                <p>Publié par {{a.author}}</p>
+                <div class="tags" v-if="a.tags">
+                    <p>Tags : </p>
+                    <small>{{a.tags}}</small>
+                </div>
             </div>
         </article>
+        <div class="creer">
+            <router-link :to="{name:'nouveau'}">
+                <i class="fa-solid fa-circle-plus"></i>
+            </router-link>
+        </div>
     </div>
     <p v-else-if="error">{{error}}</p>
     <p v-else>???</p>
 </template>
 
 <script>
-    import axios from 'axios';
+import axios from 'axios';
 
-    export default {
-        name:'AccueilComponent',
-        data: ()=>({
-            articles: undefined,
-            api: 'http://localhost:3000/articles',
-            error: ''
-        }),
-        methods: {
-            getArticles(){
-                this.error='';
-                axios.get(`${this.api}`)
-                .then(({data}) => this.articles = data)
+export default {
+    name: 'AccueilComponent',
+    data: () => ({
+        articles: undefined,
+        api: 'http://localhost:3000/articles',
+        error: ''
+    }),
+    methods: {
+        getArticles() {
+            this.error = '';
+            axios.get(`${this.api}`)
+                .then(({ data }) => this.articles = data)
                 .catch(err => {
                     this.articles = undefined;
                     this.error = `${err.response.status} : ${err.message}`
                 })
-            }
-        },
-        mounted(){
-            this.getArticles();
         }
+    },
+    mounted() {
+        this.getArticles();
     }
+}
 </script>
 
 <style scoped>
+
 .articles {
     display: flex;
     flex-wrap: wrap;
@@ -60,10 +69,19 @@ article {
     box-shadow: 0 3px 15px rgba(51, 51, 51, 0.2);
     border-radius: 10px;
     overflow: hidden;
+    transition: all .2s ease-in-out;
 }
 
-article div {
+article:hover {
+    transform: scale(1.02)
+}
+
+article .description {
     padding: 0 0 20px 20px;
+}
+
+article .tags p {
+    display: inline;
 }
 
 article img {
@@ -72,5 +90,33 @@ article img {
     object-fit: cover;
 }
 
+small {
+    background-color: rgba(51, 51, 51, 0.2);
+    border-radius: 10px;
+    padding: 5px;
+}
+
+.creer {
+    width: 350px;
+    min-height: 200px;
+    margin: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.creer a {
+    text-align: center;
+    vertical-align: middle;
+}
+
+.creer i {
+    font-size: 60px;
+    transition: all .2s ease-in-out;
+}
+
+.creer i:hover {
+    transform: scale(1.1)
+}
 
 </style>

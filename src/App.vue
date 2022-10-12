@@ -53,11 +53,14 @@ main {
     color: #222;
     min-height: calc(100vh - 100px);
     padding: 20px 0;
+    max-width: 80%;
+    margin: auto;
 }
 
 a {
     text-decoration: none;
-    color: var(--main-color-link)
+    color: var(--main-color-link);
+    transition: all .2s ease-in-out;
 }
 
 a:hover {
