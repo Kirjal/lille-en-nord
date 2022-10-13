@@ -104,7 +104,7 @@ export default {
             return this.first_nameError || !this.first_name_dirty || this.last_nameError || !this.last_name_dirty || this.loginError || !this.login_dirty || this.passwordError || !this.password_dirty;
         },
         
-    },
+    }
 
 
 } 

@@ -101,7 +101,8 @@ export default {
     },
     mounted() {
         this.getArticle();
-    }
+    },
+    emits:["connexion"]
 }
 </script>
 
