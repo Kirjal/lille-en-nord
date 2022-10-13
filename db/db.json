@@ -42,7 +42,8 @@
       "first_name": "admin",
       "last_name": "admin",
       "id": 1,
-      "author": true
+      "author": true,
+      "photo": "https://thumbs.dreamstime.com/b/personne-rouge-d-ic%C3%B4ne-126950152.jpg"
     },
     {
       "email": "bb@bb.bb",
@@ -50,7 +51,8 @@
       "first_name": "Bibouche",
       "last_name": "Boubou",
       "id": 2,
-      "author": false
+      "author": false,
+      "photo": "./src/assets/img/index.jpg"
     }
   ]
 }
