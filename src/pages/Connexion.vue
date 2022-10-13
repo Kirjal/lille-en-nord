@@ -44,6 +44,7 @@
 </template>
 
 <script>
+import router from '@/router';
 import axios from 'axios';
     export default {
         name: 'ConnexionComponent',
@@ -97,10 +98,7 @@ import axios from 'axios';
                     localStorage.setItem('token', data.accessToken);
                     localStorage.setItem('user', JSON.stringify(data.user));//const chosemachin = JSON.parse(localStorage.getItem('user')) pour repasser en objet et le cibler fastoche
                     this.$emit('connexion', data.user);
-                    this.login0 = '';
-                    this.password0 = '';
-                    this.login0_dirty = false;
-                    this.password0_dirty = false;
+                    router.push('/');
                 })
                 .catch(err => {
                     this.users = { email: '', password: '', first_name: '', last_name: '' };
@@ -134,7 +132,7 @@ import axios from 'axios';
                 return this.login0Error || this.password0Error || !this.login0_dirty || !this.password0_dirty;
             }
         },
-        emits:['connexion']
+        emits:["connexion"]
     }
 
 </script>

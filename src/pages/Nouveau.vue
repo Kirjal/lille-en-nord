@@ -1,5 +1,5 @@
 <template>
-    <div class="formulaire" v-if="user.author">
+    <div class="formulaire" v-if="user?.author">
         <h2> Créer votre article</h2>
         <form @submit.prevent="handleSubmit()">
             <div>
@@ -50,7 +50,7 @@ export default {
     props:{
         user: {
             type: Object,
-            default:()=>({})
+            default:()=>(undefined)
         }
     },
 

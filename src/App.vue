@@ -1,7 +1,6 @@
 <template>
   <Logo />
-  <Navigation :user="user"/>
-  <User :user="user" @deconnexion="updateUser"/>
+  <Navigation :user="user" @deconnexion="updateUser"/>
   <main v-on:click="fermeMenu()">
     <router-view @connexion="updateUser" :user="user"></router-view>
   </main>
@@ -11,12 +10,11 @@
 <script>
 import Navigation from './components/Navigation.vue';
 import Logo from './components/Logo.vue';
-import Citadelle from './components/Citadelle.vue'
-import User from './components/User.vue';
+import Citadelle from './components/Citadelle.vue';
 
 export default {
     name: "App",
-    components: { Navigation, Logo, Citadelle, User },
+    components: { Navigation, Logo, Citadelle },
     data:()=>({
         user: undefined
     }),

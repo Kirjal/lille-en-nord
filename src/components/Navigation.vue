@@ -2,18 +2,21 @@
     <i class="fas fa-bars" v-on:click="ouvreMenu()"></i>
     <nav>
         <i class="fas fa-times" v-on:click="fermeMenu()"></i>
+        <div v-if="user">
+            <p>Hello {{user.first_name}}</p>
+        </div>
         <ul>
             <li>
                 <router-link v-on:click="fermeMenu()" :to="{name:'accueil'}">Accueil</router-link>
             </li>
             <li>
-                <router-link v-on:click="fermeMenu()" :to="{name:'connexion'}">Connexion</router-link>
+                <router-link v-on:click="fermeMenu()" :to="{name:'connexion'}" v-if="!user">Connexion</router-link>
             </li>
             <li>
-                <router-link v-on:click="fermeMenu()" :to="{name:'profil'}" v-if="user.first_name">Profil</router-link><!--tester directement le 'user' de localStorage, car cette solution pour v-if est pas jolie-->
+                <router-link v-on:click="fermeMenu()" :to="{name:'profil'}" v-if="user">Profil</router-link>
             </li>
             <li>
-                <router-link v-on:click="fermeMenu()" :to="{name:'nouveau'}" v-if="user.author">Nouveau</router-link>
+                <router-link v-on:click="fermeMenu()" :to="{name:'nouveau'}" v-if="user?.author">Nouveau</router-link>
             </li>
             <li>
                 <router-link v-on:click="fermeMenu()" :to="{name:'contact'}">Contact</router-link>
@@ -25,6 +28,9 @@
                 <router-link v-on:click="fermeMenu()" :to="{name:'plan'}">Plan du site</router-link>
             </li>
         </ul>
+        <div v-if="user">
+            <button @click="signOut()">Déconnexion</button>
+        </div>
     </nav>
 </template>
 
@@ -38,16 +44,20 @@
             fermeMenu(){
                 document.querySelector('nav').classList.remove("menupresent");
             },
-            connexion() {
-                
+            signOut(){
+                localStorage.removeItem('token');
+                localStorage.removeItem('user');
+                console.log(this.user);
+                this.$emit('deconnexion');
             }
         },
         props:{
             user: {
                 type: Object,
-                default:()=>({})
+                default:()=>(undefined)
             }
-        }
+        },
+        emits: ["deconnexion"]
     }
 
 </script>

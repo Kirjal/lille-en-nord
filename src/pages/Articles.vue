@@ -4,7 +4,7 @@
             <i class="fa-solid fa-circle-arrow-left"></i>
         </router-link>
         <h2>{{article.title}}</h2><i>Publié par {{article.author}}</i>
-        <small v-if="article.tags">{{article.tags}}</small>
+        <small>{{article.tags}}</small>
         <img v-if="article.image" :src="article.image" :alt="`Image de l'article ${article.title}`" />
         <img v-else src="./../assets/img/planLille.jpg" />
         <p v-if="!mod" v-on:dblclick="updateArticle($event)">{{article.content}}</p>
@@ -15,9 +15,9 @@
                 <button type="button" v-on:click="this.mod=false">Annuler les modifications</button>
             </form>
         </div>
-        <div class="boutons">
-            <button v-on:click="updateArticle()" v-if="user.author">Modifier l'article</button>
-            <button v-on:click="this.del=true" v-if="user.author">Supprimer l'article</button>
+        <div class="boutons" v-if="user?.author">
+            <button v-on:click="updateArticle()">Modifier l'article</button>
+            <button v-on:click="this.del=true">Supprimer l'article</button>
         </div>
     </div>
     <div v-else-if="error">
@@ -27,10 +27,14 @@
         Chargement en cours...
     </template>
     <div v-if="del" class="delete">
-        <p>Souhaitez-vous supprimer l'article {{article.title}}?</p>
-        <div class="boutons">
+        <p v-if="user?.author">Souhaitez-vous supprimer l'article {{article.title}}?</p>
+        <div class="boutons" v-if="user?.author">
             <button v-on:click="confirmDelete(article.id)">Confirmer la suppression</button>
             <button v-on:click="this.del=false">Annuler la suppression</button>
+        </div>
+        <div class="boutons" v-else>
+            <p>Vous n'avez pas les droits de suppression sur cet article.</p>
+            <button v-on:click="this.del=false">Retour</button>
         </div>
     </div>
 </template>
@@ -52,7 +56,7 @@ export default {
         id: Number,
         user: {
             type: Object,
-            default:()=>({})
+            default:()=>(undefined)
         }
     },
     methods: {
@@ -76,7 +80,7 @@ export default {
             this.del = false;
         },
         updateArticle(e) {
-            if(!this.user.author){
+            if(!this.user?.author){
                 return e.preventDefault()
             }
             this.updateField = this.article.content;

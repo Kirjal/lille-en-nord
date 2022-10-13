@@ -6,7 +6,13 @@
 
 <script>
     export default {
-        name:'ProfilComponent'
+        name:'ProfilComponent',
+        props:{
+            user:{
+                type:Object,
+                default:()=>(undefined)
+            }
+        }
     }
 </script>
 

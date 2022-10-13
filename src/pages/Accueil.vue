@@ -17,7 +17,7 @@
                 </div>
             </div>
         </article>
-        <div class="creer" v-if="user.author">
+        <div class="creer" v-if="user?.author">
             <router-link :to="{name:'nouveau'}">
                 <i class="fa-solid fa-circle-plus"></i>
             </router-link>
@@ -54,7 +54,7 @@ export default {
     props:{
         user: {
             type: Object,
-            default:()=>({})
+            default:()=>(undefined)
         }
     }
 }
