@@ -9,12 +9,12 @@
         <div>
             <label for="first_name">Nom : </label>
             <input id="first_name" v-model.trim="users.first_name" @input="first_name_dirty= true" />
-            <small v-show="first_nameError" class="error">Votre Nom</small>
+            <small v-show="first_nameError" class="error">Veuillez entrer votre Nom</small>
         </div>
         <div>
             <label for="last_name">Prénom : </label>
             <input id="last_name" v-model.trim="users.last_name" @input="last_name_dirty= true" />
-            <small v-show="last_nameError" class="error">Votre Prénom</small>
+            <small v-show="last_nameError" class="error">Veuillez entrer votre Prénom</small>
         </div>
         <div>
             <label for="login">Identifiant (adresse mail) : </label>
