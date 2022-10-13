@@ -1,6 +1,9 @@
 <template>
     <div class="formulaire" v-if="user?.author">
         <h2> Créer votre article</h2>
+        <router-link :to="{name:'accueil'}">
+            <i class="fa-solid fa-circle-arrow-left"></i>
+        </router-link>
         <form @submit.prevent="handleSubmit()">
             <div>
                 <label for="title">Titre :</label>
@@ -118,5 +121,16 @@ button {
 
 button:hover {
     background: var(--main-color-darkest);
+}
+
+.fa-circle-arrow-left {
+    position: absolute;
+    font-size: 30px;
+    top: 25px;
+    left: -15px;
+}
+
+h2 {
+    margin-left: 5px;
 }
 </style>

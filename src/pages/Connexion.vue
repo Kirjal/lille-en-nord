@@ -170,12 +170,15 @@ button {
     white-space: nowrap;
     text-decoration: none;
     padding: 0.25rem 0.5rem;
-    width: 100%;
+    width: 80%;
     cursor: pointer;
     transition: all .2s ease-in-out;
     position: absolute;
     bottom: 0;
-    left: 0;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-weight: bold;
+    text-transform: uppercase;
 }
 
 button:hover {

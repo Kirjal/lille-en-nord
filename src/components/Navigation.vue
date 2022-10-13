@@ -1,69 +1,68 @@
 <template>
-    <i class="fas fa-bars" v-on:click="ouvreMenu()"></i>
-    <nav>
-        <i class="fas fa-times" v-on:click="fermeMenu()"></i>
-        <div v-if="user">
-            <p>Hello {{user.first_name}}</p>
-        </div>
-        <ul>
-            <li>
-                <router-link v-on:click="fermeMenu()" :to="{name:'accueil'}">Accueil</router-link>
-            </li>
-            <li>
-                <router-link v-on:click="fermeMenu()" :to="{name:'connexion'}" v-if="!user">Connexion</router-link>
-            </li>
-            <li>
-                <router-link v-on:click="fermeMenu()" :to="{name:'profil'}" v-if="user">Profil</router-link>
-            </li>
-            <li>
-                <router-link v-on:click="fermeMenu()" :to="{name:'nouveau'}" v-if="user?.author">Nouveau</router-link>
-            </li>
-            <li>
-                <router-link v-on:click="fermeMenu()" :to="{name:'contact'}">Contact</router-link>
-            </li>
-            <li>
-                <router-link v-on:click="fermeMenu()" :to="{name:'mentions'}">Mentions Légales</router-link>
-            </li>
-            <li>
-                <router-link v-on:click="fermeMenu()" :to="{name:'plan'}">Plan du site</router-link>
-            </li>
-        </ul>
-        <div v-if="user">
-            <button @click="signOut()">Déconnexion</button>
-        </div>
-    </nav>
+  <i class="fas fa-bars" v-on:click="ouvreMenu()"></i>
+  <nav>
+    <i class="fas fa-times" v-on:click="fermeMenu()"></i>
+    <div class="user" v-if="user">
+      <p>Bonjour, {{user.first_name}}.</p>
+    </div>
+    <ul>
+      <li>
+        <router-link v-on:click="fermeMenu()" :to="{name:'accueil'}">Accueil</router-link>
+      </li>
+      <li>
+        <router-link v-on:click="fermeMenu()" :to="{name:'connexion'}" v-if="!user">Connexion</router-link>
+      </li>
+      <li>
+        <router-link v-on:click="fermeMenu()" :to="{name:'profil'}" v-if="user">Profil</router-link>
+      </li>
+      <li>
+        <router-link v-on:click="fermeMenu()" :to="{name:'nouveau'}" v-if="user?.author">Nouveau</router-link>
+      </li>
+      <li>
+        <router-link v-on:click="fermeMenu()" :to="{name:'contact'}">Contact</router-link>
+      </li>
+      <li>
+        <router-link v-on:click="fermeMenu()" :to="{name:'mentions'}">Mentions Légales</router-link>
+      </li>
+      <li>
+        <router-link v-on:click="fermeMenu()" :to="{name:'plan'}">Plan du site</router-link>
+      </li>
+    </ul>
+    <div v-if="user">
+      <button @click="signOut()">Déconnexion</button>
+    </div>
+  </nav>
 </template>
 
 <script>
-    export default{
-        name:'NavigationComponent',
-        methods: {
-            ouvreMenu(){
-                document.querySelector('nav').classList.add("menupresent");
-            },
-            fermeMenu(){
-                document.querySelector('nav').classList.remove("menupresent");
-            },
-            signOut(){
-                localStorage.removeItem('token');
-                localStorage.removeItem('user');
-                console.log(this.user);
-                this.$emit('deconnexion');
-            }
-        },
-        props:{
-            user: {
-                type: Object,
-                default:()=>(undefined)
-            }
-        },
-        emits: ["deconnexion"]
+export default {
+  name: 'NavigationComponent',
+  methods: {
+    ouvreMenu() {
+      document.querySelector('nav').classList.add("menupresent");
+    },
+    fermeMenu() {
+      document.querySelector('nav').classList.remove("menupresent");
+    },
+    signOut() {
+      localStorage.removeItem('token');
+      localStorage.removeItem('user');
+      console.log(this.user);
+      this.$emit('deconnexion');
     }
+  },
+  props: {
+    user: {
+      type: Object,
+      default: () => (undefined)
+    }
+  },
+  emits: ["deconnexion"]
+}
 
 </script>
 
 <style scoped>
-
 .fa-times {
   display: block;
   position: absolute;
@@ -126,8 +125,40 @@ nav ul li a:hover {
   right: 0;
 }
 
+button {
+  margin-left: 30px;
+  margin-top: 10px;
+  height: 30px;
+  border: 0;
+  border-radius: 0.25rem;
+  background: white;
+  color: var(--main-color);
+  white-space: nowrap;
+  text-decoration: none;
+  padding: 0.25rem 0.5rem;
+  cursor: pointer;
+  transition: all .2s ease-in-out;
+  font-family: 'Helvetica Neue';
+  font-weight: bold;
+  font-size: 20px;
+}
+
+button:hover {
+  background: var(--main-color-darkest);
+  color: white;
+}
+
+.user {
+  font-family: 'Helvetica Neue';
+  font-style: italic;
+  position: absolute;
+  top: 20px;
+  left: 30px;
+  color: white;
+}
+
 @media screen and (max-width:768px) {
-  
+
   .fa-bars {
     top: unset;
     bottom: 20px;
@@ -145,6 +176,11 @@ nav ul li a:hover {
   nav ul {
     margin-top: unset;
     margin-bottom: 50px;
+    transform: rotate(180deg);
+  }
+
+  nav ul>li {
+    transform: rotate(-180deg);
   }
 
   .fa-times {
@@ -152,6 +188,15 @@ nav ul li a:hover {
     bottom: 20px;
   }
 
-}
+  button {
+    margin-top: unset;
+    margin-bottom: 10px;
+  }
 
+  .user {
+    top: unset;
+    bottom: 20px;
+  }
+
+}
 </style>

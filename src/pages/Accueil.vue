@@ -104,7 +104,7 @@ small {
 
 .creer {
     width: 350px;
-    min-height: 200px;
+    min-height: 140px;
     margin: 10px;
     display: flex;
     justify-content: center;

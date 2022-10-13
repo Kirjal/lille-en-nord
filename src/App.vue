@@ -1,5 +1,5 @@
 <template>
-  <Logo />
+  <Logo v-on:click="fermeMenu()" />
   <Navigation :user="user" @deconnexion="updateUser"/>
   <main v-on:click="fermeMenu()">
     <router-view @connexion="updateUser" :user="user"></router-view>
