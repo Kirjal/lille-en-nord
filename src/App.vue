@@ -123,6 +123,30 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: bold;
 }
 
+input {
+    display: block;
+    width: 100%;
+    padding: 5px;
+    outline: none;
+    border: 1px solid rgb(151, 151, 151);
+}
+
+input:focus {
+  border: 1px solid #555;
+}
+
+textarea {
+    width: 100%;
+    height: 300px;
+    resize: none;
+    outline: none;
+    border: 1px solid rgb(151, 151, 151);
+}
+
+textarea:focus {
+    border: 1px solid #555;
+}
+
 @font-face {
     font-family: 'Helvetica Neue';
     src: local('Helvetica Neue Bold Italic'), local('HelveticaNeue-BoldItalic'),

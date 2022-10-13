@@ -100,17 +100,6 @@ export default {
     border-radius: 10px;
 }
 
-input {
-    display: block;
-    width: 100%;
-}
-
-textarea {
-    width: 100%;
-    height: 300px;
-    resize: none;
-}
-
 button {
     height: 30px;
     border: 0;

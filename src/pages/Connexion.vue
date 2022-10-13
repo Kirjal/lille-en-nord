@@ -9,7 +9,7 @@
             </div>
             <div>
                 <label for="password">Mot de passe : </label>
-                <input id="password" v-model.trim="password0" @input="password0_dirty= true" />
+                <input type="password" id="password" v-model.trim="password0" @input="password0_dirty= true" />
                 <small class="error" v-if="password0Error">Veuillez entrer un mot de passe valide</small>
             </div>
             <button :disabled="form0Error">Connexion</button>
@@ -34,7 +34,7 @@
             </div>
             <div>
                 <label for="password">Mot de passe : </label>
-                <input id="password" v-model.trim="users.password" @input="password_dirty= true" />
+                <input type="password" id="password" v-model.trim="users.password" @input="password_dirty= true" />
                 <small class="error" v-show="passwordError">Veuillez entrer un mot de passe valide</small>
             </div>
             <button :disabled="formError">Inscription</button>
@@ -152,17 +152,12 @@ form {
     height: 400px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     margin: 20px;
     backdrop-filter: blur(20px);
     box-shadow: 0 3px 15px rgba(51, 51, 51, 0.2);
     padding: 20px;
     border-radius: 10px;
-}
-
-input {
-    display: block;
-    width: 100%;
+    overflow: hidden;
 }
 
 button {
@@ -175,10 +170,12 @@ button {
     white-space: nowrap;
     text-decoration: none;
     padding: 0.25rem 0.5rem;
-    margin: 20px 0 0 0;
     width: 100%;
     cursor: pointer;
     transition: all .2s ease-in-out;
+    position: absolute;
+    bottom: 0;
+    left: 0;
 }
 
 button:hover {

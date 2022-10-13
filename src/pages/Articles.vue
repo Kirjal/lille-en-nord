@@ -170,12 +170,6 @@ button:hover {
     background: var(--main-color-darkest);
 }
 
-textarea {
-    width: 100%;
-    height: 300px;
-    resize: none;
-}
-
 .fa-circle-arrow-left {
     position: absolute;
     font-size: 30px;
