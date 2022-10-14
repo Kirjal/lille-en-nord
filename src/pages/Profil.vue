@@ -1,31 +1,46 @@
 <template>
-    <div v-if="user">
-        <div>
-            <h2>Bonjour {{user.first_name}} </h2>
-            <img :src="user.photo" alt="photo_profil_par_defaut"/>
-        </div>
 
-        <div>
-        <p v-if="!mod">Nom: {{user.first_name}}</p>
-        <p v-if="!mod">Prénom: {{user.last_name}}</p>
-        <p v-if="!mod">Mail: {{user.email}}</p>
-        </div>
+    <div  v-if="user">
+        <h2>Bonjour {{user.first_name}} </h2>
+        <img :src="user.photo" alt="photo_profil_par_defaut"/>
+    </div>
+
+    <div>
+      <p v-if="!mod" v-on:dblclick="updateUser()">Nom: {{user.first_name}}</p>
+      <p v-if="!mod" v-on:dblclick="updateUser()">Prénom: {{user.last_name}}</p>
+      <p v-if="!mod" v-on:dblclick="updateUser()">Mail: {{user.email}}</p>
+   </div>
+
+   <div v-if="mod" class="update">
+        <form @submit.prevent="confirmUpdate(user.id)">
+            <label for="first_name">Prénom :</label>
+            <input id="first_name" v-model="this.update_first_name"/>
+            <label for="last_name">Nom :</label>
+            <input id="last_name" v-model="this.update_last_name" />
+            <label for="email">Identifiant (adresse mail) :</label>
+            <input id="email" v-model="this.update_email" />
+
+
+            <button type="submit">Confirmer les modifications</button>
+            <button type="button" v-on:click="cancelUpdate()">Annuler les modifications</button>
+        </form>
+    </div>
+    
+
+    
+    
 
         
-        <p>Changert de Mot de Pass 👇</p>
-
-        <form @submit.prevent="handleSubmit()">
-            <div>
-                <label for="password">Nouveau mot de passe : </label>
-                <input type="password" id="password" v-model.trim="users.password"  />    
-                <button>Modifier Mot de Pass</button>
-            </div>
-
-            <div class="boutons" v-if="user?.id">
-                <button v-on:click="this.del=true">Supprimer Utilisateur</button>
-            </div>
-
-        </form>
+    <p>Changer de Mot de Passe 👇</p>
+    <form @submit.prevent="handleSubmit()">
+        <div>
+            <label for="password">Nouveau mot de passe : </label>
+            <input type="password" id="password" v-model.trim="users.password"  />    
+            <button>Modifier Mot de Pass</button>
+        </div>
+    </form>
+    <div class="boutons" v-if="user?.id">
+        <button v-on:click="this.del=true">Supprimer Utilisateur</button>
     </div>
     
 </template>
@@ -38,10 +53,11 @@ export default {
 
     data: function () {
         return {
-            
-            users: { },
-            login: '',
-            password: '',
+
+            update_first_name: '',
+            update_last_name: '',
+            update_email: '',
+            update_password: '',
             login_dirty: false,
             password_dirty: false,
             first_name_dirty: false,
@@ -59,19 +75,34 @@ export default {
             default: () => (undefined)
         }
     },
-    methods: {
-        handleSubmit() {
-            this.error = '';
-            console.log(this.users);
-            this.users= { first_name: this.users.first_name, last_name: this.users.last_name, email: this.users.email, password: this.users.password, photo: this.users.photo}
-            axios.post(this.api, this.users)
-                .then(() => {
-                    this.users = { email: '', password: '', first_name: '', last_name: '' };
-                    
-                })
 
+    methods: {
+        cancelUpdate() {
+            this.user_copy = JSON.parse(localStorage.getItem('user'));
+            this.mod = false;
+        },
+
+        updateUser() {
+            this.update_first_name = this.user.first_name;
+            this.update_last_name = this.user.last_name;
+            this.update_email = this.user.email;
+            this.mod = true;
+        },
+
+        confirmUpdate(id) {
+            this.error = '';
+            axios.patch(`${this.api}/${id}`, {first_name: this.update_first_name, last_name: this.update_last_name, email: this.update_email})
+                .then((res) => {
+                    res.data.password = ''
+                    localStorage.setItem('user', res.data);
+                    console.log(res.data)
+                    console.log(this.user);
+                    this.update_first_name = '';
+                    this.update_last_name = '';
+                    this.update_email = '';
+                    this.mod = false;
+                })
                 .catch(err => {
-                    this.users = { email: '', password: '', first_name: '', last_name: '' };
                     this.error = `${err.response.status} : ${err.message}`;
                 })
         },
@@ -93,9 +124,8 @@ export default {
             router.push('/');
         }
     }
+}
 
-
-} 
 </script>
 
 <style scoped>
