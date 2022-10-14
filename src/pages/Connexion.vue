@@ -166,7 +166,7 @@ button {
     border-radius: 0.25rem;
     background: var(--main-color);
     color: white;
-    font-family: -system-ui, sans-serif;
+    font-family: 'Helvetica Neue';
     white-space: nowrap;
     text-decoration: none;
     padding: 0.25rem 0.5rem;

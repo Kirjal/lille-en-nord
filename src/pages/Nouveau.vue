@@ -96,7 +96,7 @@ export default {
 }
 
 .formulaire {
-    width: 100%;
+    width: 80%;
     backdrop-filter: blur(20px);
     box-shadow: 0 3px 15px rgba(51, 51, 51, 0.2);
     padding: 20px;
@@ -109,7 +109,6 @@ button {
     border-radius: 0.25rem;
     background: var(--main-color);
     color: white;
-    font-family: -system-ui, sans-serif;
     white-space: nowrap;
     text-decoration: none;
     padding: 0.25rem 0.5rem;
@@ -117,6 +116,9 @@ button {
     width: 100%;
     cursor: pointer;
     transition: all .2s ease-in-out;
+    font-family: 'Helvetica Neue', sans-serif;
+    font-weight: bold;
+    font-size: 15px;
 }
 
 button:hover {

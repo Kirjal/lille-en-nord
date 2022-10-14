@@ -60,8 +60,8 @@ main {
     color: #222;
     min-height: calc(100vh - 100px);
     padding: 20px 0;
-    max-width: 80%;
-    margin: auto;
+    max-width: 100%;
+    /* margin: auto; */
 }
 
 a {

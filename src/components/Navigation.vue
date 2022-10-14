@@ -162,6 +162,10 @@ button:hover {
   .fa-bars {
     top: unset;
     bottom: 20px;
+    background-color: white;
+    padding: 10px;
+    border-radius: 25px;
+    box-shadow: 0 3px 15px rgba(51, 51, 51, 0.2);
   }
 
   .fa-times {

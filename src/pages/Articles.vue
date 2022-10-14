@@ -109,11 +109,13 @@ export default {
 <style scoped>
 .article {
     width: 80%;
+    min-width: 280px;
     backdrop-filter: blur(20px);
     box-shadow: 0 3px 15px rgba(51, 51, 51, 0.2);
     border-radius: 10px;
     padding: 20px;
     background-color: rgba(255, 255, 255, 0.6);
+    max-width: 100vw;
 }
 
 .article img {
@@ -158,13 +160,15 @@ button {
     border-radius: 0.25rem;
     background: var(--main-color);
     color: white;
-    font-family: -system-ui, sans-serif;
     white-space: nowrap;
     text-decoration: none;
     padding: 0.25rem 0.5rem;
     margin: 0.25rem;
     cursor: pointer;
     transition: all .2s ease-in-out;
+    font-family: 'Helvetica Neue', sans-serif;
+    font-weight: bold;
+    font-size: 15px;
 }
 
 button:hover {

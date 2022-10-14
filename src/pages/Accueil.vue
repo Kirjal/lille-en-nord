@@ -76,6 +76,7 @@ article {
     border-radius: 10px;
     overflow: hidden;
     transition: all .2s ease-in-out;
+    max-width: 100vw;
 }
 
 article:hover {
