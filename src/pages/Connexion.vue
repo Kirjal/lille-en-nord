@@ -37,8 +37,14 @@
                 <input type="password" id="password" v-model.trim="users.password" @input="password_dirty= true" />
                 <small class="error" v-show="passwordError">Veuillez entrer un mot de passe valide</small>
             </div>
+            <div>
+                <input type="checkbox" v-model="users.author"/>
+                <label for="author">Rôle auteur (démo technique)</label>
+            </div>
             <button :disabled="formError">Inscription</button>
         </form>
+        <div v-if="signed_up">Inscription réussie, pensez à vous connecter !</div>
+        <div v-if="login_error_text">Identifiant ou mot de passe invalide</div>
     </div>
 
 </template>
@@ -51,7 +57,7 @@ import axios from 'axios';
         data: function () {
             return {
                 user: { email: '', password: ''},
-                users: { email: '', password: '', first_name: '', last_name: '' },
+                users: { email: '', password: '', first_name: '', last_name: '', author: false },
                 login0: '',
                 password0: '',
                 login_dirty: false,
@@ -62,7 +68,9 @@ import axios from 'axios';
                 password0_dirty: false,
                 api: 'http://localhost:3000/users',
                 login_api: 'http://localhost:3000/login',
-                error: ''
+                error: '',
+                signed_up: false,
+                login_error_text: false
             }
         },
         methods: {
@@ -71,12 +79,12 @@ import axios from 'axios';
                 console.log(this.users);
                 axios.post(this.api, this.users)
                     .then(() => {
-                        this.users = { email: '', password: '', first_name: '', last_name: '' };
+                        this.users = { email: '', password: '', first_name: '', last_name: '', author: false };
                         this.first_name_dirty = false;
                         this.last_name_dirty = false;
                         this.login_dirty = false;
                         this.password_dirty = false;
-                        
+                        this.signed_up = true;                       
                     })
                     
                     .catch(err => {
@@ -87,7 +95,6 @@ import axios from 'axios';
             handleSubmit0() {
                 this.error = '';
                 this.user = { email: this.login0, password: this.password0 };
-                console.log(this.user);
                 fetch(this.login_api, {
                     method: 'POST',
                     headers: { 'Content-type': 'application/json' },
@@ -101,8 +108,8 @@ import axios from 'axios';
                     router.push('/');
                 })
                 .catch(err => {
-                    this.users = { email: '', password: '', first_name: '', last_name: '' };
-                    this.error = `${err.response.status} : ${err.message}`;
+                    console.log(err.response, err.response.status)
+                    this.login_error_text = true;
                 })
             },
         },

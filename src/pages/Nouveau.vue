@@ -11,9 +11,11 @@
                 <small v-show="titleError" class="error">Veuillez entrer un titre à votre article</small>
             </div>
             <div>
-                <label for="author">Auteur(trice) :</label>
-                <input id="author" v-model.trim="article.author" @input="author_dirty= true" />
-                <small class="error" v-show="authorError">Veuillez entrer un auteur à votre article</small>
+                <p for="author">Auteur : {{this.user.last_name + ' ' + this.user.first_name}}</p>
+            </div>
+            <div>
+                <label for="tags">Tags :</label>
+                <input type="text" id="tags" v-model="article.tags"/>
             </div>
             <div>
                 <label for="image">Image :</label>
@@ -28,7 +30,7 @@
         </form>
     </div>
     <div v-else>
-        <p>No author rights?</p>
+        <p>No author rights? 🤔</p>
     </div>
 
 </template>
@@ -41,9 +43,8 @@ export default {
     name: "NouveauComponent",
     data: function () {
         return {
-            article: { title: '', author: '', image: '', content: '' },
+            article: { title: '', author: this.user.last_name + ' ' +this.user.first_name, tags: '', image: '', content: '' },
             title_dirty: false,
-            author_dirty: false,
             image_dirty: false,
             content_dirty: false,
             api: 'http://localhost:3000/articles',
@@ -63,10 +64,11 @@ export default {
             console.log(`name article : "${this.article.title}" , auteur(trice) : "${this.article.author} ", 
             image : "${this.article.image}", content : "${this.article.content}"`);
             this.error = '';
+            this.article.tags = this.article.tags.split(" ");
             axios.post(`${this.api}`, this.article)
                 .then(() => router.push('/'))
                 .catch(err => {
-                    this.article = { title: '', author: '', image: '', content: '' };
+                    this.article = { title: '', author: this.user.last_name + ' ' + this.user.first_name, tags: '', image: '', content: '' };
                     this.error = `${err.response.status} : ${err.message}`
                 })
         }
@@ -76,14 +78,11 @@ export default {
         titleError: function () {
             return !this.article.title && this.title_dirty;
         },
-        authorError: function () {
-            return !this.article.author && this.author_dirty;
-        },
         contentError: function () {
             return !this.article.content && this.content_dirty;
         },
         formError: function () {
-            return !this.title_dirty || !this.author_dirty || !this.content_dirty || this.titleError || this.authorError || this.contentError;
+            return !this.title_dirty || !this.content_dirty || this.titleError || this.contentError;
         },
     }
 

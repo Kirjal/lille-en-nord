@@ -4,9 +4,12 @@
       "id": 1,
       "title": "Lille Grande Place",
       "image": "https://media.gettyimages.com/photos/lille-grand-palais-picture-id468991133?s=170667a",
-      "content": "La Grand Place, c’est le cœur de Lille ! Comme tu pourras le voir, elle porte bien son nom. C’est l’incontournable numéro 1 pour visiter Lille en un week-end. En son centre tu pourras admirer une grande fontaine mettant en valeur la colonne de la déesse, un des monuments les plus emblématiques de Lille.Sur la place, tu peux également trouver le bâtiment de la Voix du Nord ainsi que le théâtre du nord, deux bâtiments aux architectures typiques du nord de la France. Tu peux prendre le temps de profiter de la Grand Place en t’asseyant à une table des nombreuses terrasses pour y boire une bonne bière !  🍺\n\n",
+      "content": "La Grand Place, c’est le cœur de Lille ! Comme tu pourras le voir, elle porte bien son nom. C’est l’incontournable numéro 1 pour visiter Lille en un week-end. En son centre tu pourras admirer une grande fontaine mettant en valeur la colonne de la déesse, un des monuments les plus emblématiques de Lille.Sur la place, tu peux également trouver le bâtiment de la Voix du Nord ainsi que le théâtre du nord, deux bâtiments aux architectures typiques du nord de la France. Tu peux prendre le temps de profiter de la Grand Place en t’asseyant à une table des nombreuses terrasses pour y boire une bonne bière !  🍺",
       "author": "Mehdi",
-      "tags": "balade",
+      "tags": [
+        "balade",
+        "grand place"
+      ],
       "userId": 1
     },
     {
@@ -16,7 +19,9 @@
       "content": "Hello, On part à Lille pour le week end ? Je vous avoue que ce n’est pas la destination qui me faisait le plus rêver et pourtant c’est une ville que j’ai adoré découvrir en hiver. Si vous cherchez d’autres idées de destinations en France et en Europe à visiter en hiver on vous recommande de lire cet article. Lille est le chef-lieu des Hauts-de-France et l’une des plus grande agglomération de France avec ses 1 037 939 habitants. La ville n’est pas réputée pour son beau temps mais pourtant il n’a pas fait si mauvais que ça quand j’y étais, ou du moins seulement la moitié du temps haha. On connaît Lille principalement pour sa grande braderie à la rentrée, JF y est déjà allé mais pas moi… mais ça me tente bien ! Le nord est réputé pour sa bonne ambiance alors ça ne peut qu’être sympa !",
       "author": "Alexandre",
       "userId": 1,
-      "tags": "découverte"
+      "tags": [
+        "découverte"
+      ]
     },
     {
       "id": 3,
@@ -25,14 +30,19 @@
       "content": "Il suffit alors de remonter la rue pour voir apparaître La Place du Théâtre et L’Opéra de Lille… Théâtre de style néo-classique datant du début des années 1900 et inspiré de la façade du Palais Garnier.\n\n\nAinsi que La Chambre du Commerce (Nouvelle Bourse)… et son Beffroi de 76 mètres, orné d’un carillon de 25 cloches et d’une horloge de 4 cadrans domine… A cet endroit nous ne pouvons rejoindre la Grand’Place (également Place du Général De Gaulle) sans passer devant l’un des bâtiments les plus prestigieux de Lille, à l’architecture typique de la Renaissance Flamande du XVIIe… La Vieille Bourse…",
       "author": "Philippe",
       "userId": 1,
-      "tags": "soirée"
+      "tags": [
+        "soirée"
+      ]
     },
     {
-      "title": "NOUVEAU FILLER",
+      "title": "Update filler",
       "author": "bonjour",
       "image": "",
-      "content": "jean-marc généreux ",
-      "id": 4
+      "content": "jean-marc généreux\noui",
+      "id": 4,
+      "tags": [
+        "hello"
+      ]
     }
   ],
   "users": [
@@ -55,11 +65,12 @@
       "photo": "./src/assets/img/index.jpg"
     },
     {
-      "email": "mehdi@admin.fr",
-      "password": "$2a$10$21iW/.3TNboC8606XwBqFeChrHi9SSla/xN4k5mbMmBRJruIvm1xq",
-      "first_name": "ben brahim",
-      "last_name": "mehdi",
-      "id": 3
+      "email": "authtest@authtest.authtest",
+      "password": "$2a$10$dpq2Xm/rEFs/nkylMcZiEupSGTNLFy9mOwAzzZasstxZvS3N3daRC",
+      "first_name": "Author",
+      "last_name": "Test",
+      "id": 3,
+      "author": true
     }
   ]
 }

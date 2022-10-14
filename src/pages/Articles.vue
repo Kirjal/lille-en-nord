@@ -1,31 +1,61 @@
 <template>
     <div class="article" v-if="article">
+
         <router-link :to="{name:'accueil'}">
             <i class="fa-solid fa-circle-arrow-left"></i>
         </router-link>
-        <h2>{{article.title}}</h2><i>Publié par {{article.author}}</i>
-        <small>{{article.tags}}</small>
-        <img v-if="article.image" :src="article.image" :alt="`Image de l'article ${article.title}`" />
-        <img v-else src="./../assets/img/planLille.jpg" />
+
+        <h2 v-on:dblclick="updateArticle($event)" v-if="!mod">{{article.title}}</h2>
+        <div v-if="mod">
+            <label for="title">Titre :</label>
+            <input id="title" v-model="this.updateTitle"/>
+        </div>
+
+        <p>Publié par {{article.author}}</p>
+        <div class="tags" v-if="article.tags.length > 0 && !mod" v-on:dblclick="updateArticle($event)">
+            <p>Tags : </p>
+            <small v-for="tag of article.tags" :key="tag">{{tag}}</small>
+        </div>
+        <div v-if="mod" id="tagsUpdate">
+            <label for="tags">Tags :</label>
+            <input id="tags" v-model="this.updateTags"/>
+        </div>
+        
+
+        <div v-on:dblclick="updateArticle($event)" v-if="!mod">
+            <img v-if="article.image" :src="article.image" :alt="`Image de l'article ${article.title}`"/>
+            <img v-else src="./../assets/img/planLille.jpg" />
+        </div>
+        <label for="image">Image :</label>
+        <input type="text" id="image" v-if="mod" v-model="this.updateImg"/>
+
+
         <p v-if="!mod" v-on:dblclick="updateArticle($event)">{{article.content}}</p>
         <div v-if="mod" class="update">
-            <form @submit.prevent="confirmUpdate(article.id)">
-                <textarea v-model="this.updateField"></textarea>
-                <button type="submit">Confirmer les modifications</button>
-                <button type="button" v-on:click="this.mod=false">Annuler les modifications</button>
-            </form>
+            <label for="content">Contenu :</label>
+            <textarea id="content" v-model="this.updateText"></textarea>
         </div>
+
+        <div v-if="mod">
+            <button type="submit" @click="confirmUpdate(article.id)">Confirmer</button>
+            <button type="button" v-on:click="this.mod=false">Annuler</button>
+        </div>
+
         <div class="boutons" v-if="user?.author">
             <button v-on:click="updateArticle()">Modifier l'article</button>
             <button v-on:click="this.del=true">Supprimer l'article</button>
         </div>
+
     </div>
+
     <div v-else-if="error">
         {{error}}
     </div>
+
     <template v-else>
         Chargement en cours...
     </template>
+
     <div v-if="del" class="delete">
         <p v-if="user?.author">Souhaitez-vous supprimer l'article {{article.title}}?</p>
         <div class="boutons" v-if="user?.author">
@@ -50,7 +80,10 @@ export default {
         error: '',
         del: false,
         mod: false,
-        updateField: ''
+        updateTitle: '',
+        updateTags: [],
+        updateImg: '',
+        updateText: ''
     }),
     props:{
         id: Number,
@@ -69,6 +102,9 @@ export default {
                     this.error = `${err.response.status} : ${err.message}`;
                 })
         },
+        checkTags(event){
+            console.log(event.target.value);
+        },
         confirmDelete(id) {
             this.error = '';
             console.log(`${this.api}/${id}`)
@@ -83,19 +119,29 @@ export default {
             if(!this.user?.author){
                 return e.preventDefault()
             }
-            this.updateField = this.article.content;
+            this.updateTitle = this.article.title;
+            this.updateTags = this.article.tags.join(" ");
+            this.updateImg = this.article.image;
+            this.updateText = this.article.content;
             this.mod = true;
         },
         confirmUpdate(id) {
             this.error = '';
-            axios.patch(`${this.api}/${id}`, { content: this.updateField })
+            axios.patch(`${this.api}/${id}`, { title: this.updateTitle, image: this.updateImg, content: this.updateText, tags: this.updateTags.split(" ")})
                 .then(() => {
-                    this.article.content = this.updateField;
-                    this.updateField = '';
+                    this.article.title = this.updateTitle;
+                    this.article.tags = this.updateTags.split(" ");
+                    this.article.image = this.updateImg;
+                    this.article.content = this.updateText;
+                    this.updateTitle = '';
+                    this.updateTags = [];
+                    this.updateImg = '';
+                    this.updateText = '';
                     this.mod = false;
                 })
                 .catch(err => {
-                    this.error = `${err.response.status} : ${err.message}`;
+                    console.log(this.error);
+                    console.log(err.response.status);
                 })
         }
     },

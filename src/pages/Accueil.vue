@@ -11,9 +11,9 @@
                     <h2>{{a.title}}</h2>
                 </router-link>
                 <p>Publié par {{a.author}}</p>
-                <div class="tags" v-if="a.tags">
+                <div class="tags" v-if="a.tags.length > 0">
                     <p>Tags : </p>
-                    <small>{{a.tags}}</small>
+                    <small v-for="tags of a.tags" :key="tags">{{tags}}</small>
                 </div>
             </div>
         </article>
