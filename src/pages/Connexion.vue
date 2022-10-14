@@ -104,12 +104,14 @@ import axios from 'axios';
                 .then(data => {
                     localStorage.setItem('token', data.accessToken);
                     localStorage.setItem('user', JSON.stringify(data.user));//const chosemachin = JSON.parse(localStorage.getItem('user')) pour repasser en objet et le cibler fastoche
-                    this.$emit('connexion', data.user);
-                    router.push('/');
+                    if(data.user){
+                        this.$emit('connexion', data.user);
+                        router.push('/');
+                    }
+                    this.login_error_text = true;
                 })
                 .catch(err => {
-                    console.log(err.response, err.response.status)
-                    this.login_error_text = true;
+                    console.log(err)
                 })
             },
         },
