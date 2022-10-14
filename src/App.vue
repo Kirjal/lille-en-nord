@@ -26,6 +26,9 @@ export default {
             console.log(user);
             this.user = user;
         }
+    },
+    mounted(){
+        this.user = JSON.parse(localStorage.getItem('user'));
     }
 }
 </script>

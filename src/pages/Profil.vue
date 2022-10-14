@@ -1,35 +1,37 @@
 <template>
-
-    <div  v-if="user">
-        <h2>Bonjour {{user.first_name}} </h2>
-        <img :src="user.photo" alt="photo_profil_par_defaut"/>
-    </div>
-
-    <div>
-      <p v-if="!mod">Nom: {{user.first_name}}</p>
-      <p v-if="!mod">Prénom: {{user.last_name}}</p>
-      <p v-if="!mod">Mail: {{user.email}}</p>
-    </div>
-
-    
-    <p>Changert de Mot de Pass 👇</p>
-
-    <form @submit.prevent="handleSubmit()">
+    <div v-if="user">
         <div>
-            <label for="password">Nouveau mot de passe : </label>
-            <input type="password" id="password" v-model.trim="users.password"  />    
-            <button>Modifier Mot de Pass</button>
+            <h2>Bonjour {{user.first_name}} </h2>
+            <img :src="user.photo" alt="photo_profil_par_defaut"/>
         </div>
 
-        <div class="boutons" v-if="user?.id">
-             <button v-on:click="this.del=true">Supprimer Utilisateur</button>
+        <div>
+        <p v-if="!mod">Nom: {{user.first_name}}</p>
+        <p v-if="!mod">Prénom: {{user.last_name}}</p>
+        <p v-if="!mod">Mail: {{user.email}}</p>
         </div>
 
-    </form>
+        
+        <p>Changert de Mot de Pass 👇</p>
+
+        <form @submit.prevent="handleSubmit()">
+            <div>
+                <label for="password">Nouveau mot de passe : </label>
+                <input type="password" id="password" v-model.trim="users.password"  />    
+                <button>Modifier Mot de Pass</button>
+            </div>
+
+            <div class="boutons" v-if="user?.id">
+                <button v-on:click="this.del=true">Supprimer Utilisateur</button>
+            </div>
+
+        </form>
+    </div>
     
 </template>
 
 <script>
+import router from '@/router';
 import axios from 'axios';
 export default {
     name: 'ProfilComponent',
@@ -85,7 +87,12 @@ export default {
         },
         
     },
-    emits: ['connexion']
+    emits: ['connexion'],
+    mounted(){
+        if(!this.user){
+            router.push('/');
+        }
+    }
 
 
 } 

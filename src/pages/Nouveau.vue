@@ -1,5 +1,5 @@
 <template>
-    <div class="formulaire" v-if="user?.author">
+    <div class="formulaire" v-if="this.user?.author">
         <h2> Créer votre article</h2>
         <router-link :to="{name:'accueil'}">
             <i class="fa-solid fa-circle-arrow-left"></i>
@@ -29,9 +29,6 @@
             <button :disabled="formError">Enregistrer</button>
         </form>
     </div>
-    <div v-else>
-        <p>No author rights? 🤔</p>
-    </div>
 
 </template>
 
@@ -43,7 +40,7 @@ export default {
     name: "NouveauComponent",
     data: function () {
         return {
-            article: { title: '', author: this.user.last_name + ' ' +this.user.first_name, tags: '', image: '', content: '' },
+            article: { title: '', author: this.user?.last_name + ' ' +this.user?.first_name, tags: '', image: '', content: '' },
             title_dirty: false,
             image_dirty: false,
             content_dirty: false,
@@ -84,6 +81,11 @@ export default {
         formError: function () {
             return !this.title_dirty || !this.content_dirty || this.titleError || this.contentError;
         },
+    },
+    mounted(){
+        if(!this.user || (this.user && !this.user.author)){
+            router.push('/');
+        }
     }
 
 }

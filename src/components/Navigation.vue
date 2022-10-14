@@ -35,6 +35,8 @@
 </template>
 
 <script>
+import router from '@/router';
+
 export default {
   name: 'NavigationComponent',
   methods: {
@@ -49,6 +51,8 @@ export default {
       localStorage.removeItem('user');
       console.log(this.user);
       this.$emit('deconnexion');
+      this.fermeMenu();
+      router.push('/');
     }
   },
   props: {
