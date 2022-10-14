@@ -4,7 +4,7 @@
       "id": 1,
       "title": "Lille Grande Place",
       "image": "https://media.gettyimages.com/photos/lille-grand-palais-picture-id468991133?s=170667a",
-      "content": "La Grand Place, c’est le cœur de Lille ! Comme tu pourras le voir, elle porte bien son nom. C’est l’incontournable numéro 1 pour visiter Lille en un week-end. En son centre tu pourras admirer une grande fontaine mettant en valeur la colonne de la déesse, un des monuments les plus emblématiques de Lille.Sur la place, tu peux également trouver le bâtiment de la Voix du Nord ainsi que le théâtre du nord, deux bâtiments aux architectures typiques du nord de la France. Tu peux prendre le temps de profiter de la Grand Place en t’asseyant à une table des nombreuses terrasses pour y boire une bonne bière !  🍺\n\nkhhjvjhvgh",
+      "content": "La Grand Place, c’est le cœur de Lille ! Comme tu pourras le voir, elle porte bien son nom. C’est l’incontournable numéro 1 pour visiter Lille en un week-end. En son centre tu pourras admirer une grande fontaine mettant en valeur la colonne de la déesse, un des monuments les plus emblématiques de Lille.Sur la place, tu peux également trouver le bâtiment de la Voix du Nord ainsi que le théâtre du nord, deux bâtiments aux architectures typiques du nord de la France. Tu peux prendre le temps de profiter de la Grand Place en t’asseyant à une table des nombreuses terrasses pour y boire une bonne bière !  🍺\n\n",
       "author": "Mehdi",
       "tags": "balade",
       "userId": 1
@@ -53,6 +53,13 @@
       "id": 2,
       "author": false,
       "photo": "./src/assets/img/index.jpg"
+    },
+    {
+      "email": "mehdi@admin.fr",
+      "password": "$2a$10$21iW/.3TNboC8606XwBqFeChrHi9SSla/xN4k5mbMmBRJruIvm1xq",
+      "first_name": "ben brahim",
+      "last_name": "mehdi",
+      "id": 3
     }
   ]
 }

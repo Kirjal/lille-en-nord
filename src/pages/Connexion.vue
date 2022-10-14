@@ -3,13 +3,13 @@
         <form @submit.prevent="handleSubmit0()">
             <h2>Connexion</h2>
             <div>
-                <label for="login">Identifiant (adresse mail) : </label>
-                <input id="login" v-model.trim="login0" @input="login0_dirty= true" />
+                <label for="login0">Identifiant (adresse mail) : </label>
+                <input id="login0" v-model.trim="login0" @input="login0_dirty= true" />
                 <small v-if="login0Error" class="error">Veuillez entrer un identifient valide</small>
             </div>
             <div>
-                <label for="password">Mot de passe : </label>
-                <input type="password" id="password" v-model.trim="password0" @input="password0_dirty= true" />
+                <label for="password0">Mot de passe : </label>
+                <input type="password" id="password0" v-model.trim="password0" @input="password0_dirty= true" />
                 <small class="error" v-if="password0Error">Veuillez entrer un mot de passe valide</small>
             </div>
             <button :disabled="form0Error">Connexion</button>

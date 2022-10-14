@@ -1,38 +1,30 @@
 <template>
+
     <div  v-if="user">
         <h2>Bonjour {{user.first_name}} </h2>
         <img :src="user.photo" alt="photo_profil_par_defaut"/>
     </div>
+
+    <div>
+      <p v-if="!mod">Nom: {{user.first_name}}</p>
+      <p v-if="!mod">Prénom: {{user.last_name}}</p>
+      <p v-if="!mod">Mail: {{user.email}}</p>
+    </div>
+
     
+    <p>Changert de Mot de Pass 👇</p>
+
     <form @submit.prevent="handleSubmit()">
-        <h2>Info Profil</h2>
         <div>
-            <label for="first_name">Nom : </label>
-            <input id="first_name" v-model.trim="users.first_name" @input="first_name_dirty= true" />
-            <small v-show="first_nameError" class="error">Veuillez entrer votre Nom</small>
+            <label for="password">Nouveau mot de passe : </label>
+            <input type="password" id="password" v-model.trim="users.password"  />    
+            <button>Modifier Mot de Pass</button>
         </div>
-        <div>
-            <label for="last_name">Prénom : </label>
-            <input id="last_name" v-model.trim="users.last_name" @input="last_name_dirty= true" />
-            <small v-show="last_nameError" class="error">Veuillez entrer votre Prénom</small>
+
+        <div class="boutons" v-if="user?.id">
+             <button v-on:click="this.del=true">Supprimer Utilisateur</button>
         </div>
-        <div>
-            <label for="login">Identifiant (adresse mail) : </label>
-            <input id="login" v-model.trim="users.email" @input="login_dirty= true" />
-            <small v-show="loginError" class="error">Veuillez entrer un identifient valide</small>
-        </div>
-        <div>
-            <label for="password">Mot de passe : </label>
-            <input id="password" v-model.trim="users.password" @input="password_dirty= true" />
-            <small class="error" v-show="passwordError">Veuillez entrer un mot de passe valide</small>
-        </div>
-        <div>
-            <label for="photo">photo de profil : </label>
-            <input id="photo" v-model.trim="users.photo" @input="photo_dirty= true" />
-            <small class="error" v-show="photoError">Veuillez entrer une photo</small>
-        </div>
-        <button :disabled="formError">Modifier le profil</button>
-        <button :disabled="formError">Supprimer le profil</button>
+
     </form>
     
 </template>
@@ -52,7 +44,8 @@ export default {
             password_dirty: false,
             first_name_dirty: false,
             last_name_dirty: false,
-            
+            mod: false,
+            del: false,
             api: 'http://localhost:3000/users',
             error: ''
         }
@@ -72,11 +65,7 @@ export default {
             axios.post(this.api, this.users)
                 .then(() => {
                     this.users = { email: '', password: '', first_name: '', last_name: '' };
-                    this.first_name_dirty = false;
-                    this.last_name_dirty = false;
-                    this.login_dirty = false;
-                    this.password_dirty = false;
-
+                    
                 })
 
                 .catch(err => {
@@ -88,23 +77,15 @@ export default {
     computed: {
         
         
-        first_nameError: function () {
-            return !this.users.first_name && this.first_name_dirty;
-        },
-        last_nameError: function () {
-            return !this.users.last_name && this.last_name_dirty;
-        },
-        loginError: function () {
-            return !this.users.email && this.login_dirty;
-        },
         passwordError: function () {
             return !this.users.password && this.password_dirty;
         },
         formError: function () {
-            return this.first_nameError || !this.first_name_dirty || this.last_nameError || !this.last_name_dirty || this.loginError || !this.login_dirty || this.passwordError || !this.password_dirty;
+            return this.passwordError || !this.password_dirty;
         },
         
-    }
+    },
+    emits: ['connexion']
 
 
 } 
