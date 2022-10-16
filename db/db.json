@@ -71,6 +71,22 @@
       "last_name": "Test",
       "id": 3,
       "author": true
+    },
+    {
+      "email": "nihylin@gmail.com",
+      "password": "$2a$10$8GUVqD6wkgFFivxPb6OYneIM1nOOVl/IB.21Ehc7hj7SzpS8y6fcm",
+      "first_name": "Wanquetin",
+      "last_name": "Philippe",
+      "author": true,
+      "id": 4
+    },
+    {
+      "email": "dfbdfbfdbfdbf@rvfdvfd.fr",
+      "password": "$2a$10$pRJFKSCtcpl9I5zwljeMvu86U8KAiZHinLnLo9NhU4IPUiwRrxACq",
+      "first_name": "rgdgredbgrde",
+      "last_name": "dbfdbfdbfdbfdb",
+      "author": false,
+      "id": 5
     }
   ]
 }

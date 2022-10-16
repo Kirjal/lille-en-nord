@@ -101,6 +101,7 @@ small {
     background-color: rgba(51, 51, 51, 0.2);
     border-radius: 10px;
     padding: 5px;
+    margin-right: 5px;
 }
 
 .creer {

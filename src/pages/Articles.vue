@@ -26,7 +26,7 @@
             <img v-if="article.image" :src="article.image" :alt="`Image de l'article ${article.title}`"/>
             <img v-else src="./../assets/img/planLille.jpg" />
         </div>
-        <label for="image">Image :</label>
+        <label v-if="mod" for="image">Image :</label>
         <input type="text" id="image" v-if="mod" v-model="this.updateImg"/>
 
 
@@ -57,7 +57,7 @@
     </template>
 
     <div v-if="del" class="delete">
-        <p v-if="user?.author">Souhaitez-vous supprimer l'article {{article.title}}?</p>
+        <p v-if="user?.author">Souhaitez-vous supprimer l'article "{{article.title}}" ?</p>
         <div class="boutons" v-if="user?.author">
             <button v-on:click="confirmDelete(article.id)">Confirmer la suppression</button>
             <button v-on:click="this.del=false">Annuler la suppression</button>
