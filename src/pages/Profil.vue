@@ -36,7 +36,6 @@
             <input type="password" id="password" v-model.trim="update_password"/>
             <button @click="this.pwd_confirm = true">Confirmer</button>
             <button @click="this.pwd = false, this.update_password = ''">Annuler</button>
-            <p v-if="pwd_successful">Le mot de passe a bien été modifié !</p>
 
         </div>
     </form>
@@ -57,6 +56,7 @@
             <button @click="this.del = false">Annuler</button>
         </div>
     </div>
+    <p v-if="pwd_successful">Le mot de passe a bien été modifié !</p>
     
 </template>
 
@@ -132,6 +132,7 @@ export default {
                 this.pwd_successful = true;
                 this.update_password = '';
                 this.pwd = false;
+                this.pwd_confirm = false;
             })
             .catch(err => {
                 this.error = `${err.response.status} : ${err.message}`;
