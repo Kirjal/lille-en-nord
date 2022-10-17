@@ -110,7 +110,8 @@ export default {
                 .then(data => {
                     localStorage.setItem('token', data.accessToken);
                     localStorage.setItem('user', JSON.stringify(data.user));//const chosemachin = JSON.parse(localStorage.getItem('user')) pour repasser en objet et le cibler fastoche
-                    if (data.user) {
+                    if(data.user){
+                        data.user.password = '';
                         this.$emit('connexion', data.user);
                         router.push('/');
                     }
@@ -147,7 +148,7 @@ export default {
             return this.login0Error || this.password0Error || !this.login0_dirty || !this.password0_dirty;
         }
     },
-    emits: ["connexion"]
+    emits: ["connexion", 'updatedUser']
 }
 
 </script>

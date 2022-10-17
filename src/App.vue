@@ -2,7 +2,7 @@
   <Logo v-on:click="fermeMenu()" />
   <Navigation :user="user" @deconnexion="updateUser"/>
   <main v-on:click="fermeMenu()">
-    <router-view @connexion="updateUser" :user="user"></router-view>
+    <router-view @connexion="updateUser" @updatedUser="fonctionChose" @deconnexion="updateUser" :user="user"></router-view>
   </main>
   <Citadelle/>
 </template>
@@ -25,6 +25,9 @@ export default {
         updateUser(user){
             console.log(user);
             this.user = user;
+        },
+        fonctionChose(data){
+            this.user = data; 
         }
     },
     mounted(){
