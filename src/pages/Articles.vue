@@ -148,7 +148,7 @@ export default {
     mounted() {
         this.getArticle();
     },
-    emits:["connexion", "updatedUser"]
+    emits:["connexion", "updatedUser", "deconnexion"]
 }
 </script>
 
