@@ -19,18 +19,12 @@
             <input id="last_name" v-model="this.update_last_name" />
             <label for="email">Identifiant (adresse mail) :</label>
             <input id="email" v-model="this.update_email" />
-
-
             <button type="submit">Confirmer les modifications</button>
             <button type="button" v-on:click="cancelUpdate()">Annuler les modifications</button>
         </form>
-    </div>
-    
-
-    <div>
-        <button @click="this.pwd=true">Changer de mot de passe</button>
-    </div>
-    <form @submit.prevent v-if="pwd">
+    </div>    
+    <p>Changer de Mot de Passe 👇</p>
+    <form @submit.prevent="handleSubmit()">
         <div>
             <label for="password">Changer de mot de passe : </label>
             <input type="password" id="password" v-model.trim="update_password"/>

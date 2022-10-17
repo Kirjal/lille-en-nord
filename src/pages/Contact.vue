@@ -5,7 +5,6 @@
             <h4> Contact</h4>
         </div>
         <br />
-        <img  src="./../assets/img/images00.jpg" alt="carte Lille"/>
     <br />
     <strong>Pour toute demande de partenariat, proposition, invitation à un voyage de presse, oubli dans un article… </strong>
     <br/>
