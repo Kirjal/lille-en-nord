@@ -1,7 +1,6 @@
 <template>
     <div>
-        <input v-model="search" placeholder="Rechercher par Tag" />
-        <button class="search" @click="getFilter()">OK</button>
+        <input v-model="search" placeholder="Rechercher par Tag" @input="getFilter()"/>
     </div>
 
     <div v-if="articles" class="articles">
