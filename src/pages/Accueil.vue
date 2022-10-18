@@ -1,4 +1,8 @@
 <template>
+    <div>
+        <input v-model="search" placeholder="Rechercher par Tag" />
+        <button class="search" @click="getFilter()">OK</button>
+    </div>
 
     <div v-if="articles" class="articles">
         <article v-for="a of articles" :key="a.id + 'a'">
@@ -30,14 +34,31 @@
 <script>
 import axios from 'axios';
 
+
 export default {
     name: 'AccueilComponent',
     data: () => ({
         articles: undefined,
         api: 'http://localhost:3000/articles',
-        error: ''
+        error: '',
+        search: ''
     }),
+
     methods: {
+        getFilter() {
+            if (this.search !== '') {
+                this.error = '';
+                axios.get(`${this.api}?tags_like=${this.param}`)
+                    .then(({ data }) => this.articles = data)
+                    .catch(err => {
+                        this.articles = undefined;
+                        this.error = `${err.response.status} : ${err.message}`
+                    })
+            } else {
+                this.getArticles();
+            } 
+        },
+
         getArticles() {
             this.error = '';
             axios.get(`${this.api}`)
@@ -56,12 +77,17 @@ export default {
             type: Object,
             default:()=>(undefined)
         }
-    }
+    },
+    computed: {
+        param() {
+            return this.search.split(/[ ,]+/).join(',')
+        }
+    },
+    emits:['connexion', 'deconnexion', 'updatedUser']
 }
 </script>
 
 <style scoped>
-
 .articles {
     display: flex;
     flex-wrap: wrap;
