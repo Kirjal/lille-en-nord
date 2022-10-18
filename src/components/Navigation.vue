@@ -29,7 +29,7 @@
       </li>
     </ul>
     <div v-if="user">
-      <button @click="signOut()">Déconnexion</button>
+      <button @click="signOut()"><i class="fa-solid fa-right-from-bracket"></i>Déconnexion</button>
     </div>
   </nav>
 </template>
@@ -150,6 +150,10 @@ button {
 button:hover {
   background: var(--main-color-darkest);
   color: white;
+}
+
+button i {
+  margin-right: 3px;
 }
 
 .user {

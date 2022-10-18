@@ -52,17 +52,15 @@
       "first_name": "admin",
       "last_name": "admin",
       "id": 1,
-      "author": true,
-      "photo": "https://thumbs.dreamstime.com/b/personne-rouge-d-ic%C3%B4ne-126950152.jpg"
+      "author": true
     },
     {
       "email": "bb@bb.bb",
-      "password": "$2a$10$EFGiotAXP0FCmXQENGlZfuQWOvPdgDPxXhtAz3rrs0/lGxGz5bOEm",
+      "password": "$2a$10$ouhKm4YG0lnd1gntFNsKFOVZUOU4UdEUdFpVDlwMOsCkrnLsUSjfi",
       "first_name": "Bibouche",
       "last_name": "Boubou",
       "id": 2,
-      "author": false,
-      "photo": "./src/assets/img/index.jpg"
+      "author": false
     },
     {
       "email": "authtest@authtest.authtest",

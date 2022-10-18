@@ -41,9 +41,9 @@
             <button type="button" v-on:click="this.mod=false">Annuler</button>
         </div>
 
-        <div class="boutons" v-if="user?.author">
-            <button v-on:click="updateArticle()">Modifier l'article</button>
-            <button v-on:click="this.del=true">Supprimer l'article</button>
+        <div v-if="user?.author">
+            <button v-on:click="updateArticle()"><i class="fa-solid fa-pen-to-square"></i>Modifier l'article</button>
+            <button v-on:click="this.del=true"><i class="fa-solid fa-trash-can"></i>Supprimer l'article</button>
         </div>
 
     </div>
@@ -219,6 +219,10 @@ button {
 
 button:hover {
     background: var(--main-color-darkest);
+}
+
+button i {
+    margin-right: 3px;
 }
 
 .fa-circle-arrow-left {
