@@ -12,7 +12,8 @@
         </div>
 
         <p>Publié par {{article.author}}</p>
-        <div class="tags" v-if="article.tags.length > 0 && !mod" v-on:dblclick="updateArticle($event)">
+        <small class="date" v-if="article.date">Le {{article.date}}</small>
+        <div class="tags" v-if="article.tags.length > 0 && article.tags[0] && !mod" v-on:dblclick="updateArticle($event)">
             <p>Tags : </p>
             <small v-for="tag of article.tags" :key="tag">{{tag}}</small>
         </div>
@@ -41,11 +42,34 @@
             <button type="button" v-on:click="this.mod=false">Annuler</button>
         </div>
 
-        <div v-if="user?.author">
-            <button v-on:click="updateArticle()"><i class="fa-solid fa-pen-to-square"></i>Modifier l'article</button>
-            <button v-on:click="this.del=true"><i class="fa-solid fa-trash-can"></i>Supprimer l'article</button>
+        <div>
+            <button v-if="user" @click="this.com = true">Commenter</button>
+            <button v-if="user?.author" v-on:click="updateArticle()"><i class="fa-solid fa-pen-to-square"></i>Modifier l'article</button>
+            <button v-if="user?.author" v-on:click="this.del=true"><i class="fa-solid fa-trash-can"></i>Supprimer l'article</button>
         </div>
 
+        <form @submit.prevent="postComment()" v-if="com">
+            <label for="comment">Votre commentaire</label>
+            <textarea id="comment" v-model="this.newComment"></textarea>
+            <button>Publier</button>
+            <button @click="this.com = false, this.newComment = ''">Annuler</button>
+        </form>
+
+        <div v-if="this.comments && !editCom">
+            <h3>Commentaires</h3>
+            <div v-for="c in this.comments" :key="c.id">
+                <p v-if="c.author">De {{c.author}}</p>
+                <small v-if="c.date">{{c.date}}</small>
+                <p>{{c.content}}</p>
+                <button v-if="(this.user?.id === c.userId) || this.user?.author" @click="editComment(c.content, c.id)">Modifier</button>
+                <button v-if="(this.user?.id === c.userId) || this.user?.author" @click="deleteComment(c.id)">Supprimer</button>
+            </div>
+        </div>
+        <form v-if="editCom" @submit.prevent="confirmEditComment(this.commentId)">
+            <textarea v-model="this.updateComment"></textarea>
+            <button>Confirmer les modifications</button>
+            <button @click="this.editCom = false, this.commentId = null">Annuler</button>
+        </form>
     </div>
 
     <div v-else-if="error">
@@ -57,7 +81,7 @@
     </template>
 
     <div v-if="del" class="delete">
-        <p v-if="user?.author">Souhaitez-vous supprimer l'article "{{article.title}}" ?</p>
+        <p v-if="user?.author">Souhaitez-vous supprimer l'article "{{article.title}}"?</p>
         <div class="boutons" v-if="user?.author">
             <button v-on:click="confirmDelete(article.id)">Confirmer la suppression</button>
             <button v-on:click="this.del=false">Annuler la suppression</button>
@@ -76,14 +100,21 @@ export default {
     name: 'ArticlesComponent',
     data: () => ({
         article: undefined,
+        comments: [],
         api: 'http://localhost:3000/articles',
+        comment_api: 'http://localhost:3000/comments',
         error: '',
         del: false,
         mod: false,
+        com: false,
         updateTitle: '',
         updateTags: [],
         updateImg: '',
-        updateText: ''
+        updateText: '',
+        newComment: '',
+        updateComment: '',
+        editCom: false,
+        commentId: null
     }),
     props:{
         id: Number,
@@ -96,18 +127,28 @@ export default {
         getArticle() {
             this.error = '';
             axios.get(`${this.api}/${this.id}`)
-                .then(({ data }) => this.article = data)
+                .then(
+                    ({ data }) => (
+                        this.article = data,
+                        this.getComments(data.id)
+                    )
+                )
                 .catch(err => {
                     this.article = undefined;
                     this.error = `${err.response.status} : ${err.message}`;
                 })
         },
-        checkTags(event){
-            console.log(event.target.value);
+        getComments(id){
+            this.error= '';
+            axios.get(`${this.comment_api}?postId=${id}`)
+            .then(response => this.comments = response.data)
+            .catch(err=>{
+                this.comments = undefined;
+                this.error = `${err.response.status} : ${err.message}`
+            })
         },
         confirmDelete(id) {
             this.error = '';
-            console.log(`${this.api}/${id}`)
             axios.delete(`${this.api}/${id}`)
                 .then(() => router.push('/'))
                 .catch(err => {
@@ -143,6 +184,33 @@ export default {
                     console.log(this.error);
                     console.log(err.response.status);
                 })
+        },
+        postComment(){
+            this.error='';
+            axios.post(`${this.comment_api}`, {author: this.user?.last_name + ' ' +this.user?.first_name, date: new Date().toLocaleDateString("fr"), content: this.newComment, userId: this.user.id, postId: this.article.id})
+            .then(this.com = false, this.newComment = '', this.getArticle())
+            .catch(err=>{
+                this.error = `${err.response.status} : ${err.message}`
+            })
+        },
+        deleteComment(id){
+            axios.delete(`${this.comment_api}/${id}`)
+            .then(this.getArticle())
+            .catch(err=>{
+                this.error = `${err.response.status} : ${err.message}`
+            })
+        },
+        editComment(content, id){
+            this.editCom = true;
+            this.updateComment = content;
+            this.commentId = id;
+        },
+        confirmEditComment(id){
+            axios.patch(`${this.comment_api}/${id}`, {content: this.updateComment})
+            .then(this.updateComment = '', this.editCom = false, this.commentId = null, this.getArticle())
+            .catch(err=>{
+                this.error = `${err.response.status} : ${err.message}`
+            })
         }
     },
     mounted() {
@@ -170,10 +238,16 @@ export default {
     max-width: 100%;
 }
 
-.article small {
+.date{
+    font-style: italic;
+    display:block;
+    margin-top:-5px;
+}
+
+.article .tags small {
     background-color: rgba(51, 51, 51, 0.2);
     border-radius: 10px;
-    padding: 5px;
+    padding: 5px 8px;
     margin-left: 5px;
 }
 

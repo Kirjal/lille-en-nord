@@ -43,6 +43,17 @@
       "tags": [
         "hello"
       ]
+    },
+    {
+      "title": "dzrzereza",
+      "author": "admin admin",
+      "tags": [
+        "zerazer"
+      ],
+      "image": "",
+      "content": "zer",
+      "date": "18/10/2022",
+      "id": 5
     }
   ],
   "users": [
@@ -85,6 +96,24 @@
       "last_name": "dbfdbfdbfdbfdb",
       "author": false,
       "id": 5
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "author": "Oui Bonjour",
+      "date": "18/10/2022",
+      "content": "Oui tout à fait",
+      "userId": 1,
+      "postId": 5
+    },
+    {
+      "author": "admin admin",
+      "date": "18/10/2022",
+      "content": "oui ça marche",
+      "userId": 1,
+      "postId": 5,
+      "id": 2
     }
   ]
 }

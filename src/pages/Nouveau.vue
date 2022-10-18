@@ -40,7 +40,7 @@ export default {
     name: "NouveauComponent",
     data: function () {
         return {
-            article: { title: '', author: this.user?.last_name + ' ' +this.user?.first_name, tags: '', image: '', content: '' },
+            article: { title: '', author: this.user?.last_name + ' ' +this.user?.first_name, tags: '', image: '', content: '', date: new Date().toLocaleDateString("fr") },
             title_dirty: false,
             image_dirty: false,
             content_dirty: false,
@@ -58,8 +58,7 @@ export default {
     methods: {
         handleSubmit() {
 
-            console.log(`name article : "${this.article.title}" , auteur(trice) : "${this.article.author} ", 
-            image : "${this.article.image}", content : "${this.article.content}"`);
+            //console.log(`name article : "${this.article.title}" , auteur(trice) : "${this.article.author} ", image : "${this.article.image}", content : "${this.article.content}"`);
             this.error = '';
             this.article.tags = this.article.tags.split(" ");
             axios.post(`${this.api}`, this.article)

@@ -15,7 +15,8 @@
                     <h2>{{a.title}}</h2>
                 </router-link>
                 <p>Publié par {{a.author}}</p>
-                <div class="tags" v-if="a.tags.length > 0">
+                <small class="date" v-if="a.date">Le {{a.date}}</small>
+                <div class="tags" v-if="a.tags.length > 0 && a.tags[0]">
                     <p>Tags : </p>
                     <small v-for="tags of a.tags" :key="tags">{{tags}}</small>
                 </div>
@@ -123,10 +124,15 @@ article img {
     object-fit: cover;
 }
 
-small {
+.date{
+    font-style: italic;
+    display:block;
+    margin-top:-5px;
+}
+.tags small {
     background-color: rgba(51, 51, 51, 0.2);
     border-radius: 10px;
-    padding: 5px;
+    padding: 5px 8px;
     margin-right: 5px;
 }
 
