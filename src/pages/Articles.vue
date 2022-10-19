@@ -12,7 +12,7 @@
         </div>
 
         <p>Publié par {{article.author}}</p>
-        <small class="date" v-if="article.date">Le {{article.date}}</small>
+        <small class="date" v-if="article.date">Le {{formatDate(article.date)}}</small>
         <div class="tags" v-if="article.tags.length > 0 && article.tags[0] && !mod" v-on:dblclick="updateArticle($event)">
             <p>Tags : </p>
             <small v-for="tag of article.tags" :key="tag">{{tag}}</small>
@@ -55,11 +55,11 @@
             <button @click="this.com = false, this.newComment = ''">Annuler</button>
         </form>
 
-        <div v-if="this.comments && !editCom">
+        <div v-if="(this.comments.length > 0) && !editCom">
             <h3>Commentaires</h3>
             <div v-for="c in this.comments" :key="c.id">
                 <p v-if="c.author">De {{c.author}}</p>
-                <small v-if="c.date">{{c.date}}</small>
+                <small v-if="c.date">{{formatDate(c.date)}}</small>
                 <p>{{c.content}}</p>
                 <button v-if="(this.user?.id === c.userId) || this.user?.author" @click="editComment(c.content, c.id)">Modifier</button>
                 <button v-if="(this.user?.id === c.userId) || this.user?.author" @click="deleteComment(c.id)">Supprimer</button>
@@ -141,7 +141,7 @@ export default {
         getComments(id){
             this.error= '';
             axios.get(`${this.comment_api}?postId=${id}`)
-            .then(response => this.comments = response.data)
+            .then(response => (response.data.sort((a,b)=>new Date(b.date) - new Date(a.date)), this.comments = response.data))
             .catch(err=>{
                 this.comments = undefined;
                 this.error = `${err.response.status} : ${err.message}`
@@ -187,7 +187,7 @@ export default {
         },
         postComment(){
             this.error='';
-            axios.post(`${this.comment_api}`, {author: this.user?.last_name + ' ' +this.user?.first_name, date: new Date().toLocaleDateString("fr"), content: this.newComment, userId: this.user.id, postId: this.article.id})
+            axios.post(`${this.comment_api}`, {author: this.user?.last_name + ' ' +this.user?.first_name, date: new Date(), content: this.newComment, userId: this.user.id, postId: this.article.id})
             .then(this.com = false, this.newComment = '', this.getArticle())
             .catch(err=>{
                 this.error = `${err.response.status} : ${err.message}`
@@ -211,6 +211,9 @@ export default {
             .catch(err=>{
                 this.error = `${err.response.status} : ${err.message}`
             })
+        },
+        formatDate(date){
+            return new Date(date).toLocaleString('fr');
         }
     },
     mounted() {

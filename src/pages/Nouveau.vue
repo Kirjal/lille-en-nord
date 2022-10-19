@@ -40,7 +40,7 @@ export default {
     name: "NouveauComponent",
     data: function () {
         return {
-            article: { title: '', author: this.user?.last_name + ' ' +this.user?.first_name, tags: '', image: '', content: '', date: new Date().toLocaleDateString("fr") },
+            article: { title: '', author: this.user?.last_name + ' ' +this.user?.first_name, tags: '', image: '', content: '', date: new Date() },
             title_dirty: false,
             image_dirty: false,
             content_dirty: false,

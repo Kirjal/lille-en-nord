@@ -5,7 +5,7 @@
     </div>
 
     <div v-if="articles" class="articles">
-        <article v-for="a of articles" :key="a.id + 'a'">
+        <article v-for="a of articles.slice(0, currentArticles)" :key="a.id + 'a'">
             <router-link :to="{name:`article`, params:{id: a.id}}">
                 <img v-if="a.image" :src="a.image" :alt="`image de l'article ${a.title}`" />
                 <img v-else src="./../assets/img/planLille.jpg" />
@@ -15,17 +15,15 @@
                     <h2>{{a.title}}</h2>
                 </router-link>
                 <p>Publié par {{a.author}}</p>
-                <small class="date" v-if="a.date">Le {{a.date}}</small>
+                <small class="date" v-if="a.date">Le {{formatDate(a.date)}}</small>
                 <div class="tags" v-if="a.tags.length > 0 && a.tags[0]">
                     <p>Tags : </p>
                     <small v-for="tags of a.tags" :key="tags">{{tags}}</small>
                 </div>
             </div>
         </article>
-        <div class="creer" v-if="user?.author">
-            <router-link :to="{name:'nouveau'}">
-                <i class="fa-solid fa-circle-plus"></i>
-            </router-link>
+        <div class="show_more" v-if="this.currentArticles < this.articles.length" @click="showMore()">
+            <i class="fa-solid fa-circle-plus"></i>
         </div>
     </div>
     <p v-else-if="error">{{error}}</p>
@@ -40,7 +38,8 @@ export default {
         articles: undefined,
         api: 'http://localhost:3000/articles',
         error: '',
-        search: ''
+        search: '',
+        currentArticles: 5
     }),
 
     methods: {
@@ -48,7 +47,7 @@ export default {
             if (this.search !== '') {
                 this.error = '';
                 axios.get(`${this.api}?tags_like=${this.param}`)
-                    .then(({ data }) => this.articles = data)
+                    .then(({ data }) => (data.sort((a,b)=>new Date(b.date) - new Date(a.date)), this.articles = data))
                     .catch(err => {
                         this.articles = undefined;
                         this.error = `${err.response.status} : ${err.message}`
@@ -61,11 +60,17 @@ export default {
         getArticles() {
             this.error = '';
             axios.get(`${this.api}`)
-                .then(({ data }) => this.articles = data)
+                .then(({ data }) => (data.sort((a,b)=>new Date(b.date) - new Date(a.date)), this.articles = data))
                 .catch(err => {
                     this.articles = undefined;
                     this.error = `${err.response.status} : ${err.message}`
                 })
+        },
+        formatDate(date){
+            return new Date(date).toLocaleString('fr');
+        },
+        showMore(){
+            this.currentArticles += 6
         }
     },
     mounted() {
@@ -135,7 +140,7 @@ article img {
     margin-right: 5px;
 }
 
-.creer {
+.show_more {
     width: 350px;
     min-height: 140px;
     margin: 10px;
@@ -144,17 +149,17 @@ article img {
     align-items: center;
 }
 
-.creer a {
+.show_more a {
     text-align: center;
     vertical-align: middle;
 }
 
-.creer i {
+.show_more i {
     font-size: 60px;
     transition: all .2s ease-in-out;
 }
 
-.creer i:hover {
+.show_more i:hover {
     transform: scale(1.1)
 }
 

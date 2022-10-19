@@ -44,7 +44,7 @@
         <div class="boutons" v-if="user?.id">
             <button v-if="!mod" @click="updateUser()"><i class="fa-solid fa-pen-to-square"></i>Modifier les données</button>
             <button v-if="!pwd" @click="this.pwd=true"><i class="fa-solid fa-key"></i>Changer de mot de passe</button>
-            <button v-on:click="this.del=true"><i class="fa-solid fa-trash-can"></i>Supprimer Utilisateur</button>
+            <button v-on:click="this.del=true"><i class="fa-solid fa-trash-can"></i>Supprimer votre compte</button>
             <button @click="signOut()"><i class="fa-solid fa-right-from-bracket"></i>Déconnexion</button>
         </div>
         <p class ="success" v-if="pwd_successful">Le mot de passe a bien été modifié !</p>
@@ -57,8 +57,8 @@
             <button @click="this.pwd = false, this.pwd_confirm = false, this.update_password = ''">Annuler</button>
         </div>
         <div v-if="user && del">
-            <p>Souhaitez-vous supprimer cet utilisateur?</p>
-            <button @click="deleteUser(user.id)">Supprimer l'utilisateur</button>
+            <p>Souhaitez-vous supprimer votre compte?</p>
+            <button @click="deleteUser(user.id)">Supprimer votre compte</button>
             <button @click="this.del = false">Annuler</button>
         </div>
     </div>

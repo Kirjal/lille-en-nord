@@ -18,6 +18,7 @@
 
         <form @submit.prevent="handleSubmit()">
             <h2>Inscription</h2>
+            <p><small>Tous les champs sont obligatoires !</small></p>
             <div>
                 <label for="first_name">Prénom : </label>
                 <input id="first_name" v-model.trim="users.first_name" @input="first_name_dirty= true" />
