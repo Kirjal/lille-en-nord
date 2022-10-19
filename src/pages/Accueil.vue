@@ -1,9 +1,19 @@
 <template>
     
+    <div>
+        <h2>Nos incontournables à faire et à voir</h2>
+        <p> Aujourd'hui nous t'emmenons chez nous : à Lille ! Et oui, c'est là que nous vivons depuis quelques années, tout
+            au Nord dans la magnifique capitale des Flandres. Et nous avons décidé de te faire découvrir les incontournables à faire
+            et à voir si tu t'y installe ou le temps d'un week-end. Entre nature, monuments ou encore gastronomie tu trouveras à coup sûr
+            ton bonheur dans ces articles pour un séjour en famille ou entre amis. </p>
+        <p>Bienvenue dans les Hauts-de-France !</p>
+    </div>
+
     <div class="search">
         <input v-model="search" @input="getFilter()" placeholder="Rechercher par tag" />
     </div>
 
+   
     <div v-if="articles" class="articles">
         <article v-for="a of articles.slice(0, currentArticles)" :key="a.id + 'a'">
             <router-link :to="{name:`article`, params:{id: a.id}}">
