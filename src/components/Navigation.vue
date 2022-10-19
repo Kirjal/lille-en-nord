@@ -32,6 +32,7 @@
       <button @click="signOut()"><i class="fa-solid fa-right-from-bracket"></i>Déconnexion</button>
     </div>
   </nav>
+  <div id="nav_overlay" @click="fermeMenu()"></div>
 </template>
 
 <script>
@@ -42,9 +43,11 @@ export default {
   methods: {
     ouvreMenu() {
       document.querySelector('nav').classList.add("menupresent");
+      document.querySelector('#nav_overlay').classList.add("menupresent");
     },
     fermeMenu() {
       document.querySelector('nav').classList.remove("menupresent");
+      document.querySelector('#nav_overlay').classList.remove("menupresent");
     },
     signOut() {
       localStorage.removeItem('token');
@@ -73,7 +76,7 @@ export default {
   top: 20px;
   right: 20px;
   font-size: 3rem;
-  z-index: 1;
+  z-index: 3;
   color: white;
   cursor: pointer;
 }
@@ -85,7 +88,7 @@ export default {
   right: 30px;
   font-size: 3rem;
   cursor: pointer;
-  z-index: 1;
+  z-index: 3;
 }
 
 nav {
@@ -94,7 +97,7 @@ nav {
   width: 250px;
   height: 100%;
   position: fixed;
-  z-index: 1;
+  z-index: 3;
   top: 0;
   right: -250px;
   transition: 250ms all;
@@ -125,7 +128,16 @@ nav ul li a:hover {
   text-decoration: underline;
 }
 
-.menupresent {
+#nav_overlay{
+  z-index:2;
+  height:100vh;
+  width:100vw;
+  position:fixed;
+  top:0;
+  right:-100vw;
+}
+
+.menupresent, #nav_overlay.menupresent {
   right: 0;
 }
 

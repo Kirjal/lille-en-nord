@@ -1,7 +1,11 @@
 <template>
     <div class="connexion">
-        <form @submit.prevent="handleSubmit0()">
-            <h2>Connexion</h2>
+        <div class="form_choice">
+            <h2 @click="displaySwitch('#login', '#signUp', $event)" class="active">Connexion</h2>
+            <h2 @click="displaySwitch('#signUp', '#login', $event)">Inscription</h2>
+        </div>
+
+        <form @submit.prevent="login()" id="login" class="up">
             <div>
                 <label for="login0">Identifiant (adresse mail) : </label>
                 <input id="login0" v-model.trim="login0" @input="login0_dirty= true" />
@@ -12,12 +16,11 @@
                 <input type="password" id="password0" v-model.trim="password0" @input="password0_dirty= true" />
                 <small class="error" v-if="password0Error">Veuillez entrer un mot de passe valide</small>
             </div>
-            <button :disabled="form0Error">Connexion</button>
+            <button :disabled="form0Error">Se connecter</button>
             <div class="error" v-if="login_error_text">Identifiant ou mot de passe invalide</div>
         </form>
 
-        <form @submit.prevent="handleSubmit()">
-            <h2>Inscription</h2>
+        <form @submit.prevent="signUp()" id="signUp">
             <p><small>Tous les champs sont obligatoires !</small></p>
             <div>
                 <label for="first_name">Prénom : </label>
@@ -81,7 +84,7 @@ export default {
         }
     },
     methods: {
-        handleSubmit() {
+        signUp() {
             this.error = '';
             console.log(this.users);
             axios.post(this.api, this.users)
@@ -99,7 +102,7 @@ export default {
                     this.error = `${err.response.status} : ${err.message}`;
                 })
         },
-        handleSubmit0() {
+        login() {
             this.error = '';
             this.user = { email: this.login0, password: this.password0 };
             fetch(this.login_api, {
@@ -122,6 +125,12 @@ export default {
                     console.log(err)
                 })
         },
+        displaySwitch(target, other, event){
+            document.querySelector(target).classList.add('up');
+            document.querySelector(other).classList.remove('up');
+            document.querySelector('.active').classList.remove('active');
+            event.target.classList.add('active');
+        }
     },
     computed: {
         login0Error: function () {
@@ -157,10 +166,38 @@ export default {
 <style scoped>
 .connexion {
     display: flex;
-    flex-wrap: wrap;
+    flex-flow: column;
     align-items: center;
-    justify-content: center;
+    justify-content:flex-start;
     width: 100%;
+    height:100vh;
+}
+
+.form_choice{
+    display:flex;
+    gap:20px;
+}
+
+h2{
+    display:block;
+    height:30px;
+    backdrop-filter: blur(20px);
+    border-radius:15px 15px 0 0;
+    padding:20px 20px;
+    line-height:0;
+    font-size:2rem;
+    background-color:#fff3;
+    box-shadow: 0 3px 15px rgba(51, 51, 51, 0.2);
+    transition:all 0.3s;
+}
+
+h2:not(.active){
+    background-color:#ccc8;
+    cursor:pointer;
+}
+
+h2.active, h2:not(.active):hover{
+    background-color:#fffc;
 }
 
 form {
@@ -168,12 +205,18 @@ form {
     max-width: 400px;
     display: flex;
     flex-direction: column;
-    margin: 20px;
     backdrop-filter: blur(20px);
     box-shadow: 0 3px 15px rgba(51, 51, 51, 0.2);
     padding: 20px 20px 70px;
     border-radius: 10px;
     overflow: hidden;
+}
+
+form:not(.up){
+    display:none;
+}
+.up{
+    display:block;
 }
 
 button {
