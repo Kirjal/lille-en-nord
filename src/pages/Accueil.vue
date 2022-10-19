@@ -167,10 +167,13 @@ article img {
 .show_more i {
     font-size: 60px;
     transition: all .2s ease-in-out;
+    color: var(--main-color);
 }
 
 .show_more i:hover {
-    transform: scale(1.1)
+    transform: scale(1.1);
+    cursor: pointer;
+    color: var(--main-color-darker);
 }
 
 .search {

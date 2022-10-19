@@ -24,9 +24,6 @@
       <li>
         <router-link v-on:click="fermeMenu()" :to="{name:'mentions'}">Mentions Légales</router-link>
       </li>
-      <li>
-        <router-link v-on:click="fermeMenu()" :to="{name:'plan'}">Plan du site</router-link>
-      </li>
     </ul>
     <div v-if="user">
       <button @click="signOut()"><i class="fa-solid fa-right-from-bracket"></i>Déconnexion</button>
