@@ -14,8 +14,8 @@
         </div>
 
         <div v-if="!mod" class="user">
-            <p v-on:dblclick="updateUser()"><b>Nom :</b> {{user?.first_name}}</p>
-            <p v-on:dblclick="updateUser()"><b>Prénom :</b> {{user?.last_name}}</p>
+            <p v-on:dblclick="updateUser()"><b>Prénom :</b> {{user?.first_name}}</p>
+            <p v-on:dblclick="updateUser()"><b>Nom :</b> {{user?.last_name}}</p>
             <p v-on:dblclick="updateUser()"><b>Identifiant (adresse e-mail)  :</b> {{user?.email}}</p>
         </div>
 

@@ -1,6 +1,7 @@
 <template>
-    <div>
-        <input v-model="search" placeholder="Rechercher par Tag" @input="getFilter()"/>
+    
+    <div class="search">
+        <input v-model="search" @input="getFilter()" placeholder="Rechercher par tag" />
     </div>
 
     <div v-if="articles" class="articles">
@@ -33,8 +34,6 @@
 
 <script>
 import axios from 'axios';
-
-
 export default {
     name: 'AccueilComponent',
     data: () => ({
@@ -92,6 +91,7 @@ export default {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    max-width: 1150px;
 }
 
 article {
@@ -156,6 +156,26 @@ article img {
 
 .creer i:hover {
     transform: scale(1.1)
+}
+
+.search {
+    width: 80%;
+    max-width: 350px;
+    margin-bottom: 15px;
+    font-size: 16px;
+}
+
+.search input {
+    border-radius: 10px;
+    font-family: 'Helvetica Neue';
+    padding:10px;
+    border: none;
+    outline: none;
+    box-shadow: 0 3px 15px rgba(51, 51, 51, 0.2);
+}
+
+.search input:focus {
+    outline: 1px var(--main-color) solid;
 }
 
 </style>
