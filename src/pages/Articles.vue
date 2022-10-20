@@ -140,7 +140,7 @@ export default {
         },
         getComments(id){
             this.error= '';
-            axios.get(`${this.comment_api}?postId=${id}`)
+            axios.get(`${this.comment_api}?articleId=${id}`)
             .then(response => (response.data.sort((a,b)=>new Date(b.date) - new Date(a.date)), this.comments = response.data))
             .catch(err=>{
                 this.comments = undefined;
@@ -152,8 +152,8 @@ export default {
             axios.delete(`${this.api}/${id}`)
                 .then(() => router.push('/'))
                 .catch(err => {
-                    this.error = `${err.response.status} : ${err.message}`;
-                });
+                    this.error = `${err.response.status} : ${err.message}`
+                })
             this.del = false;
         },
         updateArticle(e) {
@@ -187,7 +187,7 @@ export default {
         },
         postComment(){
             this.error='';
-            axios.post(`${this.comment_api}`, {author: this.user?.last_name + ' ' +this.user?.first_name, date: new Date(), content: this.newComment, userId: this.user.id, postId: this.article.id})
+            axios.post(`${this.comment_api}`, {author: this.user?.last_name + ' ' +this.user?.first_name, date: new Date(), content: this.newComment, userId: this.user.id, articleId: this.article.id})
             .then(this.com = false, this.newComment = '', this.getArticle())
             .catch(err=>{
                 this.error = `${err.response.status} : ${err.message}`
