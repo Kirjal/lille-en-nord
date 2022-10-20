@@ -10,17 +10,21 @@
             <label for="title">Titre :</label>
             <input id="title" v-model="this.updateTitle"/>
         </div>
-
-        <p>Publié par {{article.author}}</p>
-        <small class="date" v-if="article.date">Le {{formatDate(article.date)}}</small>
-        <div class="tags" v-if="article.tags.length > 0 && article.tags[0] && !mod" v-on:dblclick="updateArticle($event)">
-            <p>Tags : </p>
-            <small v-for="tag of article.tags" :key="tag">{{tag}}</small>
+        <div class="info_container">
+            <div>
+                <p>Publié par {{article.author}}</p>
+                <small class="date" v-if="article.date">Le {{formatDate(article.date)}}</small>
+            </div>
+            <div class="tags" v-if="article.tags.length > 0 && article.tags[0] && !mod" v-on:dblclick="updateArticle($event)">
+                <p>Tags : </p>
+                <small v-for="tag of article.tags" :key="tag">{{tag}}</small>
+            </div>
+            <div v-if="mod" id="tagsUpdate">
+                <label for="tags">Tags :</label>
+                <input id="tags" v-model="this.updateTags"/>
+            </div>
         </div>
-        <div v-if="mod" id="tagsUpdate">
-            <label for="tags">Tags :</label>
-            <input id="tags" v-model="this.updateTags"/>
-        </div>
+        
         
 
         <div v-on:dblclick="updateArticle($event)" v-if="!mod">
@@ -55,14 +59,14 @@
             <button @click="this.com = false, this.newComment = ''">Annuler</button>
         </form>
 
-        <div v-if="(this.comments.length > 0) && !editCom">
-            <h3>Commentaires</h3>
-            <div v-for="c in this.comments" :key="c.id">
-                <p v-if="c.author">De {{c.author}}</p>
+        <div v-if="(this.comments.length > 0) && !editCom" class="comment_container">
+            <h3>Commentaires :</h3>
+            <div v-for="c in this.comments" :key="c.id" class="comment_block">
+                <h4 v-if="c.author">{{c.author}}</h4>
                 <small v-if="c.date">{{formatDate(c.date)}}</small>
                 <p>{{c.content}}</p>
-                <button v-if="(this.user?.id === c.userId) || this.user?.author" @click="editComment(c.content, c.id)">Modifier</button>
-                <button v-if="(this.user?.id === c.userId) || this.user?.author" @click="deleteComment(c.id)">Supprimer</button>
+                <i class="fa-solid fa-pen-to-square" v-if="(this.user?.id === c.userId) || this.user?.author" @click="editComment(c.content, c.id)"></i>
+                <i class="fa-solid fa-trash-can" v-if="(this.user?.id === c.userId) || this.user?.author" @click="deleteComment(c.id)"></i>
             </div>
         </div>
         <form v-if="editCom" @submit.prevent="confirmEditComment(this.commentId)">
@@ -235,22 +239,39 @@ export default {
     max-width: 100vw;
 }
 
+h2{
+    font-size: 2em;
+}
+
 .article img {
     display: block;
     margin: 20px auto;
-    max-width: 100%;
+    max-width: 700px;
 }
 
 .date{
     font-style: italic;
     display:block;
     margin-top:-5px;
+    color:#666;
+}
+
+
+.info_container{
+    display:flex;
+    justify-content:space-between;
+}
+.tags{
+    display:flex;
+    justify-content:flex-end;
+    gap:10px;
+    align-items:center;
 }
 
 .article .tags small {
     background-color: rgba(51, 51, 51, 0.2);
-    border-radius: 10px;
-    padding: 5px 8px;
+    border-radius: 50px;
+    padding: 5px 12px 6px;
     margin-left: 5px;
 }
 
@@ -305,7 +326,39 @@ button i {
 .fa-circle-arrow-left {
     position: absolute;
     font-size: 30px;
-    top: 25px;
+    top: 33px;
     left: -15px;
+}
+
+.comment_container{
+    margin-top:50px;
+    padding:10px;
+}
+
+.comment_block{
+    margin-top:30px;
+    position:relative;
+    padding-right:50px;
+}
+.comment_block small{
+    display:block;
+    margin-top:-5px;
+    font-style:italic;
+}
+
+.comment_block i{
+    cursor:pointer;
+    position:absolute;
+}
+
+.comment_block i:nth-last-child(2){
+    right:25px;
+    bottom:5px;
+
+}
+
+.comment_block i:last-child{
+    right:5px;
+    bottom:5px;
 }
 </style>
