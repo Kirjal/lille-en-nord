@@ -47,7 +47,7 @@
         </div>
 
         <div>
-            <button v-if="user" @click="this.com = true">Commenter</button>
+            <button v-if="user" @click="this.com = true"><i class="fa-regular fa-comment"></i>Commenter</button>
             <button v-if="user?.author" v-on:click="updateArticle()"><i class="fa-solid fa-pen-to-square"></i>Modifier l'article</button>
             <button v-if="user?.author" v-on:click="this.del=true"><i class="fa-solid fa-trash-can"></i>Supprimer l'article</button>
         </div>

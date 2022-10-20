@@ -153,7 +153,7 @@ article img {
 }
 
 .show_more {
-    width: 350px;
+    /* width: 350px; */
     min-height: 140px;
     display: flex;
     justify-content: center;
@@ -208,7 +208,7 @@ article img {
     padding: 20px;
     box-shadow: 0 3px 15px rgba(51, 51, 51, 0.3);
     border-radius: 10px;
-    margin: 20px;
+    margin: 20px 20px 70px;
 }
 
 .presentation p {
