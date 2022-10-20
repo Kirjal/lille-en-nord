@@ -1,31 +1,142 @@
 {
-    "articles": [
-        {
-            "id":1,
-            "title":"tempus",
-            "image":"http://dummyimage.com/199x100.png/cc0000/ffffff",
-            "content":"vel ipsum praesent blandit lacinia erat vestibulum sed magna at nunc commodo placerat praesent blandit nam nulla integer pede justo lacinia eget tincidunt eget tempus vel pede morbi porttitor lorem id ligula suspendisse ornare consequat lectus in est risus auctor sed tristique in tempus sit amet sem fusce consequat nulla nisl nunc nisl duis bibendum felis sed interdum venenatis turpis enim blandit mi in porttitor pede justo eu massa donec dapibus duis at velit eu est congue elementum in hac habitasse platea dictumst morbi vestibulum velit id pretium iaculis diam erat fermentum justo nec condimentum neque sapien placerat ante nulla justo aliquam quis turpis eget elit sodales scelerisque mauris sit amet eros suspendisse accumsan tortor quis turpis sed ante vivamus tortor duis mattis egestas metus aenean fermentum donec ut mauris eget massa tempor convallis nulla neque libero convallis eget",
-            "author":"Skipper Bearward",
-            "userId":1,
-            "tags":"nam"
-        },
-        {
-            "id":2,
-            "title":"morbi a ipsum integer",
-            "image":"http://dummyimage.com/194x100.png/5fa2dd/ffffff",
-            "content":"id massa id nisl venenatis lacinia aenean sit amet justo morbi ut odio cras mi pede malesuada in imperdiet et commodo vulputate justo in blandit ultrices enim lorem ipsum dolor sit amet consectetuer adipiscing elit proin interdum mauris non ligula pellentesque ultrices phasellus id sapien in sapien iaculis congue vivamus metus arcu adipiscing molestie hendrerit at vulputate vitae nisl aenean lectus pellentesque eget nunc donec quis orci eget orci vehicula condimentum curabitur in libero ut massa volutpat convallis morbi odio odio elementum eu interdum eu tincidunt in leo maecenas pulvinar lobortis est phasellus sit amet erat nulla tempus vivamus in felis eu sapien cursus vestibulum proin",
-            "author":"Lezlie Vinecombe",
-            "userId":2,
-            "tags":"justo"
-        },
-        {
-            "id":3,
-            "title":"rhoncus dui vel sem sed sagittis",
-            "image":"http://dummyimage.com/207x100.png/dddddd/000000",
-            "content":"ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae duis faucibus accumsan odio curabitur convallis duis consequat dui nec nisi volutpat eleifend donec ut dolor morbi vel lectus in quam fringilla rhoncus mauris enim leo rhoncus sed vestibulum sit amet cursus id turpis integer aliquet massa id lobortis convallis tortor risus dapibus augue vel accumsan tellus nisi eu orci mauris lacinia sapien quis libero nullam sit amet turpis elementum ligula vehicula consequat morbi a ipsum integer a nibh in quis justo maecenas rhoncus aliquam lacus morbi quis tortor id nulla",
-            "author":"Vina Banker",
-            "userId":3,
-            "tags":"mi"
-        }
-    ]
+  "articles": [
+    {
+      "id": 1,
+      "title": "Lille Grande Place",
+      "image": "https://media.gettyimages.com/photos/lille-grand-palais-picture-id468991133?s=170667a",
+      "content": "La Grand Place, c’est le cœur de Lille ! Comme tu pourras le voir, elle porte bien son nom. C’est l’incontournable numéro 1 pour visiter Lille en un week-end. En son centre tu pourras admirer une grande fontaine mettant en valeur la colonne de la déesse, un des monuments les plus emblématiques de Lille.Sur la place, tu peux également trouver le bâtiment de la Voix du Nord ainsi que le théâtre du nord, deux bâtiments aux architectures typiques du nord de la France. Tu peux prendre le temps de profiter de la Grand Place en t’asseyant à une table des nombreuses terrasses pour y boire une bonne bière !  🍺",
+      "author": "Mehdi",
+      "tags": [
+        "balade",
+        "grand place"
+      ],
+      "userId": 1,
+      "date": "2021-11-18T10:40:20.649Z"
+    },
+    {
+      "id": 2,
+      "title": "Un week-end à Lille",
+      "image": "https://lille.guide-ville.com/wp-content/uploads/2014/09/grand-place-lille-1-5.jpg",
+      "content": "Hello, On part à Lille pour le week end ? Je vous avoue que ce n’est pas la destination qui me faisait le plus rêver et pourtant c’est une ville que j’ai adoré découvrir en hiver. Si vous cherchez d’autres idées de destinations en France et en Europe à visiter en hiver on vous recommande de lire cet article. Lille est le chef-lieu des Hauts-de-France et l’une des plus grande agglomération de France avec ses 1 037 939 habitants. La ville n’est pas réputée pour son beau temps mais pourtant il n’a pas fait si mauvais que ça quand j’y étais, ou du moins seulement la moitié du temps haha. On connaît Lille principalement pour sa grande braderie à la rentrée, JF y est déjà allé mais pas moi… mais ça me tente bien ! Le nord est réputé pour sa bonne ambiance alors ça ne peut qu’être sympa !",
+      "author": "Alexandre",
+      "userId": 1,
+      "tags": [
+        "découverte"
+      ],
+      "date": "2020-12-21T10:40:20.649Z"
+    },
+    {
+      "id": 3,
+      "title": "Lille by night",
+      "image": "https://media.routard.com/image/30/9/photo.1593309.w430.jpg",
+      "content": "Il suffit alors de remonter la rue pour voir apparaître La Place du Théâtre et L’Opéra de Lille… Théâtre de style néo-classique datant du début des années 1900 et inspiré de la façade du Palais Garnier.\n\n\nAinsi que La Chambre du Commerce (Nouvelle Bourse)… et son Beffroi de 76 mètres, orné d’un carillon de 25 cloches et d’une horloge de 4 cadrans domine… A cet endroit nous ne pouvons rejoindre la Grand’Place (également Place du Général De Gaulle) sans passer devant l’un des bâtiments les plus prestigieux de Lille, à l’architecture typique de la Renaissance Flamande du XVIIe… La Vieille Bourse…",
+      "author": "Philippe",
+      "userId": 1,
+      "tags": [
+        "soirée"
+      ],
+      "date": "2022-09-12T10:40:20.649Z"
+    },
+    {
+      "title": "Article test",
+      "author": "bonjour",
+      "image": "",
+      "content": "Ceci est le contenu de l'article",
+      "id": 4,
+      "tags": [
+        "hello"
+      ],
+      "date": "2022-10-15T10:40:20.649Z"
+    },
+    {
+      "title": "dzrzereza",
+      "author": "admin admin",
+      "tags": [
+        "zerazer"
+      ],
+      "image": "",
+      "content": "jsqmfjsqldkhflkqdsf",
+      "date": "2022-10-18T08:32:54.649Z",
+      "id": 5
+    },
+    {
+      "title": "test4",
+      "author": "admin admin",
+      "tags": [
+        ""
+      ],
+      "image": "",
+      "content": "test4",
+      "date": "2022-10-19T09:51:50.322Z",
+      "id": 7
+    }
+  ],
+  "users": [
+    {
+      "email": "admin@admin.fr",
+      "password": "$2a$10$.OoepCQirWtqSo5459blgOY/cInFhHWpPyJC6qd8MSndZKkJ5w98C",
+      "first_name": "admin",
+      "last_name": "admin",
+      "id": 1,
+      "author": true
+    },
+    {
+      "email": "bb@bb.bb",
+      "password": "$2a$10$ouhKm4YG0lnd1gntFNsKFOVZUOU4UdEUdFpVDlwMOsCkrnLsUSjfi",
+      "first_name": "Bibouche",
+      "last_name": "Boubou",
+      "id": 2,
+      "author": false
+    },
+    {
+      "email": "authtest@authtest.authtest",
+      "password": "$2a$10$dpq2Xm/rEFs/nkylMcZiEupSGTNLFy9mOwAzzZasstxZvS3N3daRC",
+      "first_name": "Author",
+      "last_name": "Test",
+      "id": 3,
+      "author": true
+    },
+    {
+      "email": "nihylin@gmail.com",
+      "password": "$2a$10$8GUVqD6wkgFFivxPb6OYneIM1nOOVl/IB.21Ehc7hj7SzpS8y6fcm",
+      "first_name": "Philippe",
+      "last_name": "Wanquetin",
+      "author": true,
+      "id": 4
+    },
+    {
+      "email": "dfbdfbfdbfdbf@rvfdvfd.fr",
+      "password": "$2a$10$pRJFKSCtcpl9I5zwljeMvu86U8KAiZHinLnLo9NhU4IPUiwRrxACq",
+      "first_name": "rgdgredbgrde",
+      "last_name": "dbfdbfdbfdbfdb",
+      "author": false,
+      "id": 5
+    }
+  ],
+  "comments": [
+    {
+      "author": "admin admin",
+      "date": "2022-10-18T17:05:45.488Z",
+      "content": "oui ça marche",
+      "userId": 1,
+      "articleId": 5,
+      "id": 2
+    },
+    {
+      "author": "admin admin",
+      "date": "2022-10-19T09:07:52.488Z",
+      "content": "Nouveau commentaire test date",
+      "userId": 1,
+      "articleId": 5,
+      "id": 3
+    },
+    {
+      "author": "Boubou Bibouche",
+      "date": "2022-10-20T07:19:04.864Z",
+      "content": "Ce commentaire est écrit par un compte sans droits d'édition.",
+      "userId": 2,
+      "articleId": 5,
+      "id": 4
+    }
+  ]
 }

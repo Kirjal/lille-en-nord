@@ -1,18 +1,38 @@
 <template>
-  <Navigation/>
-  <main>
-    <router-view></router-view>
+  <Logo v-on:click="fermeMenu()" />
+  <Navigation :user="user" @deconnexion="updateUser"/>
+  <main v-on:click="fermeMenu()">
+    <router-view @connexion="updateUser" @updatedUser="fonctionChose" @deconnexion="updateUser" :user="user"></router-view>
   </main>
-  <Pied/>
+  <Citadelle/>
 </template>
 
 <script>
 import Navigation from './components/Navigation.vue';
-import Pied from './components/Pied.vue';
+import Logo from './components/Logo.vue';
+import Citadelle from './components/Citadelle.vue';
 
 export default {
     name: "App",
-    components: { Navigation, Pied }
+    components: { Navigation, Logo, Citadelle },
+    data:()=>({
+        user: undefined
+    }),
+    methods:{
+        fermeMenu(){
+            document.querySelector('nav').classList.remove("menupresent");
+        },
+        updateUser(user){
+            console.log(user);
+            this.user = user;
+        },
+        fonctionChose(data){
+            this.user = data; 
+        }
+    },
+    mounted(){
+        this.user = JSON.parse(localStorage.getItem('user'));
+    }
 }
 </script>
 
@@ -35,6 +55,102 @@ export default {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    line-height: 1.6;
+    color: #222;
+    min-height: calc(100vh - 100px);
+    padding: 20px 0;
+    max-width: 100%;
+    /* margin: auto; */
+}
+
+a {
+    text-decoration: none;
+    color: var(--main-color-link);
+    transition: all .2s ease-in-out;
+}
+
+a:hover {
+    color: var(--main-color-darkest)
+}
+
+html {
+  /* Définition 1rem = 10px */
+  font-size: 62.5%;
+}
+
+body {
+  /* 16px */
+  font-size: 1.6rem;
+  font-family: sans-serif;
+  line-height: 1.6;
+  color: #222;
+  min-height: 100vh;
+}
+
+h1 {
+  /* 32px */
+  font-size: 3.2rem;
+}
+
+h2 {
+  /* 24px */  
+  font-size: 2.4rem;
+}
+
+h3 {
+  /* 19px */
+  font-size: 1.9rem;
+}
+
+h4 {
+  /* 16px */  
+  font-size: 1.6rem;
+}
+
+h5 {
+  /* 13px */  
+  font-size: 1.3rem;
+}
+
+h6 {
+  /* 11px */  
+  font-size: 1.1rem;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Helvetica Neue';
+    font-weight: bold;
+}
+
+input {
+    display: block;
+    width: 100%;
+    padding: 5px;
+    outline: none;
+    border: 1px solid rgb(151, 151, 151);
+}
+
+input:focus {
+  border: 1px solid #555;
+}
+
+textarea {
+    width: 100%;
+    height: 300px;
+    resize: none;
+    outline: none;
+    border: 1px solid rgb(151, 151, 151);
+}
+
+textarea:focus {
+    border: 1px solid #555;
 }
 
 @font-face {

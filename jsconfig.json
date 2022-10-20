@@ -4,7 +4,6 @@
     "target": "es5",
     "module": "esnext",
     "baseUrl": "./",
-    "jsx": "preserve",
     "moduleResolution": "node",
     "paths": {
       "@/*": [
@@ -17,6 +16,5 @@
       "dom.iterable",
       "scripthost"
     ],
-    "jsx" : "preserve"
   }
 }
