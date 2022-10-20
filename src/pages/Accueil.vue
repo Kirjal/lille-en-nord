@@ -40,7 +40,6 @@
         </div>
     </div>
     <p v-else-if="error">{{error}}</p>
-    <p v-else>???</p>
 </template>
 
 <script>
@@ -106,17 +105,16 @@ export default {
 
 <style scoped>
 .articles {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    max-width: 1150px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap:20px;
+    width:80%;
+    min-width:320px;
 }
 
 article {
-    width: 350px;
     backdrop-filter: blur(20px);
-    margin: 10px;
-    box-shadow: 0 3px 15px rgba(51, 51, 51, 0.2);
+    box-shadow: 0 3px 15px rgba(51, 51, 51, 0.3);
     border-radius: 10px;
     overflow: hidden;
     transition: all .2s ease-in-out;
@@ -149,15 +147,14 @@ article img {
 
 .tags small {
     background-color: rgba(51, 51, 51, 0.2);
-    border-radius: 10px;
-    padding: 5px 8px;
+    border-radius: 50px;
+    padding: 5px 10px 6px;
     margin-right: 5px;
 }
 
 .show_more {
-    width: 350px;
+    /* width: 350px; */
     min-height: 140px;
-    margin: 10px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -193,7 +190,7 @@ article img {
     padding: 10px;
     border: none;
     outline: none;
-    box-shadow: 0 3px 15px rgba(51, 51, 51, 0.2);
+    box-shadow: 0 3px 15px 3px rgba(51, 51, 51, 0.3);
 }
 
 .search input:focus {
@@ -205,14 +202,13 @@ article img {
     justify-content: space-around;
     align-items: center;
     width: 80%;
-    max-width: 1150px;
     height: fit-content;
     min-width: 300px;
     backdrop-filter: blur(20px);
     padding: 20px;
-    box-shadow: 0 3px 15px rgba(51, 51, 51, 0.2);
+    box-shadow: 0 3px 15px rgba(51, 51, 51, 0.3);
     border-radius: 10px;
-    margin: 20px;
+    margin: 20px 20px 70px;
 }
 
 .presentation p {
@@ -229,6 +225,18 @@ article img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+}
+
+@media (min-width:870px){
+    .articles{
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (min-width:1400px){
+    .articles{
+        grid-template-columns: 1fr 1fr 1fr;
+    }
 }
 
 @media screen and (max-width:768px) {

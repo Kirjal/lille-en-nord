@@ -132,13 +132,14 @@ h1, h2, h3, h4, h5, h6 {
 input {
     display: block;
     width: 100%;
-    padding: 5px;
+    padding: 5px 10px 6px;
     outline: none;
     border: 1px solid rgb(151, 151, 151);
+    border-radius:10px;
 }
 
 input:focus {
-  border: 1px solid #555;
+  border: 1px solid #333;
 }
 
 textarea {
@@ -150,7 +151,7 @@ textarea {
 }
 
 textarea:focus {
-    border: 1px solid #555;
+    border: 1px solid #333;
 }
 
 @font-face {

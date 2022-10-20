@@ -8,12 +8,12 @@
         <form @submit.prevent="login()" id="login" class="up">
             <div>
                 <label for="login0">Identifiant (adresse mail) : </label>
-                <input id="login0" v-model.trim="login0" @input="login0_dirty= true" />
+                <input id="login0" v-model.trim="login0" @focusout="login0_dirty= true" />
                 <small v-if="login0Error" class="error">Veuillez entrer un identifiant valide</small>
             </div>
             <div>
                 <label for="password0">Mot de passe : </label>
-                <input type="password" id="password0" v-model.trim="password0" @input="password0_dirty= true" />
+                <input type="password" id="password0" v-model.trim="password0" @focusout="password0_dirty= true" />
                 <small class="error" v-if="password0Error">Veuillez entrer un mot de passe valide</small>
             </div>
             <button :disabled="form0Error">Se connecter</button>
@@ -24,22 +24,22 @@
             <p><small>Tous les champs sont obligatoires !</small></p>
             <div>
                 <label for="first_name">Prénom : </label>
-                <input id="first_name" v-model.trim="users.first_name" @input="first_name_dirty= true" />
+                <input id="first_name" v-model.trim="users.first_name" @focusout="first_name_dirty= true" />
                 <small v-show="first_nameError" class="error">Veuillez entrer votre prénom</small>
             </div>
             <div>
                 <label for="last_name">Nom : </label>
-                <input id="last_name" v-model.trim="users.last_name" @input="last_name_dirty= true" />
+                <input id="last_name" v-model.trim="users.last_name" @focusout="last_name_dirty= true" />
                 <small v-show="last_nameError" class="error">Veuillez entrer votre nom</small>
             </div>
             <div>
                 <label for="login">Identifiant (adresse mail) : </label>
-                <input id="login" v-model.trim="users.email" @input="login_dirty= true" />
+                <input id="login" v-model.trim="users.email" @focusout="login_dirty= true" />
                 <small v-show="loginError" class="error">Veuillez entrer un identifiant valide</small>
             </div>
             <div>
                 <label for="password">Mot de passe : </label>
-                <input type="password" id="password" v-model.trim="users.password" @input="password_dirty= true" />
+                <input type="password" id="password" v-model.trim="users.password" @focusout="password_dirty= true" />
                 <small class="error" v-show="passwordError">Veuillez entrer un mot de passe valide</small>
             </div>
             <div>
@@ -210,6 +210,10 @@ form {
     padding: 20px 20px 70px;
     border-radius: 10px;
     overflow: hidden;
+}
+
+form > div{
+    height:80px;
 }
 
 form:not(.up){
