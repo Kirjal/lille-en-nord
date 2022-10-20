@@ -38,10 +38,10 @@
       "date": "2022-09-12T10:40:20.649Z"
     },
     {
-      "title": "Update filler",
+      "title": "Article test",
       "author": "bonjour",
       "image": "",
-      "content": "jean-marc généreux\noui",
+      "content": "Ceci est le contenu de l'article",
       "id": 4,
       "tags": [
         "hello"
@@ -58,17 +58,6 @@
       "content": "jsqmfjsqldkhflkqdsf",
       "date": "2022-10-18T08:32:54.649Z",
       "id": 5
-    },
-    {
-      "title": "Oui",
-      "author": "admin admin",
-      "tags": [
-        "oui"
-      ],
-      "image": "",
-      "content": "test date",
-      "date": "2022-10-19T08:47:54.649Z",
-      "id": 6
     },
     {
       "title": "test4",
@@ -91,149 +80,6 @@
       "content": "test5",
       "date": "2022-10-19T09:52:10.270Z",
       "id": 8
-    },
-    {
-      "title": "test6",
-      "author": "admin admin",
-      "tags": [
-        ""
-      ],
-      "image": "",
-      "content": "test6",
-      "date": "2022-10-19T09:52:19.878Z",
-      "id": 9
-    },
-    {
-      "title": "test7",
-      "author": "admin admin",
-      "tags": [
-        ""
-      ],
-      "image": "",
-      "content": "test7",
-      "date": "2022-10-19T09:52:26.197Z",
-      "id": 10
-    },
-    {
-      "title": "test8",
-      "author": "admin admin",
-      "tags": [
-        ""
-      ],
-      "image": "",
-      "content": "test8",
-      "date": "2022-10-19T09:52:32.454Z",
-      "id": 11
-    },
-    {
-      "title": "test9",
-      "author": "admin admin",
-      "tags": [
-        ""
-      ],
-      "image": "",
-      "content": "test9",
-      "date": "2022-10-19T09:52:38.196Z",
-      "id": 12
-    },
-    {
-      "title": "test10",
-      "author": "admin admin",
-      "tags": [
-        ""
-      ],
-      "image": "",
-      "content": "test10",
-      "date": "2022-10-19T09:52:45.117Z",
-      "id": 13
-    },
-    {
-      "title": "test11",
-      "author": "admin admin",
-      "tags": [
-        ""
-      ],
-      "image": "",
-      "content": "test11",
-      "date": "2022-10-19T09:52:51.069Z",
-      "id": 14
-    },
-    {
-      "title": "test12",
-      "author": "admin admin",
-      "tags": [
-        ""
-      ],
-      "image": "",
-      "content": "test12",
-      "date": "2022-10-19T09:52:58.859Z",
-      "id": 15
-    },
-    {
-      "title": "test13",
-      "author": "admin admin",
-      "tags": [
-        ""
-      ],
-      "image": "",
-      "content": "test13",
-      "date": "2022-10-19T09:53:09.894Z",
-      "id": 16
-    },
-    {
-      "title": "test14",
-      "author": "admin admin",
-      "tags": [
-        ""
-      ],
-      "image": "",
-      "content": "test14",
-      "date": "2022-10-19T09:53:22.672Z",
-      "id": 17
-    },
-    {
-      "title": "test15",
-      "author": "admin admin",
-      "tags": [
-        ""
-      ],
-      "image": "",
-      "content": "test15",
-      "date": "2022-10-19T09:53:40.303Z",
-      "id": 18
-    },
-    {
-      "title": "test16",
-      "author": "admin admin",
-      "tags": [
-        ""
-      ],
-      "image": "",
-      "content": "test16",
-      "date": "2022-10-19T09:53:57.623Z",
-      "id": 19
-    },
-    {
-      "title": "test17",
-      "author": "admin admin",
-      "tags": [
-        ""
-      ],
-      "image": "",
-      "content": "test17",
-      "date": "2022-10-19T09:54:03.091Z",
-      "id": 20
-    },
-    {
-      "title": "test18",
-      "author": "admin admin",
-      "tags": [
-        ""
-      ],
-      "image": "",
-      "content": "test18",
-      "date": "2022-10-19T09:54:10.773Z",
-      "id": 21
     }
   ],
   "users": [
@@ -280,14 +126,6 @@
   ],
   "comments": [
     {
-      "id": 1,
-      "author": "Oui Bonjour",
-      "date": "2022-10-18T14:25:30.488Z",
-      "content": "Oui tout à fait",
-      "userId": 1,
-      "postId": 5
-    },
-    {
       "author": "admin admin",
       "date": "2022-10-18T17:05:45.488Z",
       "content": "oui ça marche",
@@ -302,6 +140,14 @@
       "userId": 1,
       "postId": 5,
       "id": 3
+    },
+    {
+      "author": "Boubou Bibouche",
+      "date": "2022-10-20T07:19:04.864Z",
+      "content": "Ce commentaire est écrit par un compte sans droits d'édition.",
+      "userId": 2,
+      "postId": 5,
+      "id": 4
     }
   ]
 }
