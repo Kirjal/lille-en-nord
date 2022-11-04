@@ -247,6 +247,7 @@ h2{
     display: block;
     margin: 20px auto;
     max-width: 700px;
+    width: 100%;
 }
 
 .date{
