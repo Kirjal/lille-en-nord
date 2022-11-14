@@ -35,6 +35,7 @@
                 </div>
             </div>
         </article>
+        
         <div class="show_more" v-if="this.currentArticles < this.articles.length" @click="showMore()">
             <i class="fa-solid fa-circle-plus"></i>
         </div>
